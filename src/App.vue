@@ -18,18 +18,24 @@
             </div>
         </div>
         <image-tank :img-list="imgList"/>
+        <modal v-if="showModal"
+               :content="modalContent"
+               :state="modalState"
+               @close="showModal = false" />
     </div>
 </template>
 
 <script>
     import Box from "@/components/Box";
     import ImageTank from "@/components/ImageTank";
+    import Modal from "@/components/Modal";
 
     export default {
         name: 'App',
         components: {
             Box,
-            ImageTank
+            ImageTank,
+            Modal
         },
         mounted() {
             const baseUrl = process.env.BASE_URL;
@@ -44,19 +50,25 @@
 
             this.$on('image:added', (id) => {
                 this.imgList.splice(this.imgList.findIndex(img => img.id === id), 1);
+                this.showModal = true;
+                this.modalContent = 'Bravo !';
+                this.modalState = 'success';
+            });
+
+            this.$on('image:error', () => {
+                this.showModal = true;
+                this.modalContent = 'Désolé ce n\'est pas la bonne image !';
+                this.modalState = 'error';
             });
         },
         data() {
             return {
                 houseList: [],
                 buildingList: [],
-                imgList: []
-            }
-        },
-        method: {
-            handleImageAdd(id) {
-                console.log(id);
-
+                imgList: [],
+                showModal: false,
+                modalContent: '',
+                modalState: 'success'
             }
         }
     }

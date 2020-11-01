@@ -23,9 +23,8 @@
                     this.imageName = data.imageName;
                     this.$parent.$emit('image:added', data.id);
                 } else {
-                    alert('Essaye encopre');
+                    this.$parent.$emit('image:error');
                 }
-                console.log(data, event);
             }
         }
     }
@@ -46,7 +45,7 @@
 
         &.success {
             transition: all .5s ease-in-out;
-            border: 2px solid olivedrab;
+            border: 2px solid #3b92ad;
         }
 
         &:not(.success):hover {
