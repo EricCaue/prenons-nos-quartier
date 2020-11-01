@@ -1,116 +1,102 @@
 <template>
-  <div id="app">
-    <div class="timeline">
-      <img src="@/assets/frise.png" alt="frise temporelle">
+    <div id="app">
+        <div class="timeline">
+            <img src="@/assets/frise.png" alt="frise temporelle">
+        </div>
+        <div class="box-container">
+            <div class="house-container">
+                <h2>Maisons</h2>
+                <div class="box-tank">
+                    <Box v-for="house in houseList" :key="house.id" :id="house.id"/>
+                </div>
+            </div>
+            <div class="building-container">
+                <h2>Immeubles</h2>
+                <div class="box-tank">
+                    <Box v-for="building in buildingList" :key="building.id" :id="building.id"/>
+                </div>
+            </div>
+        </div>
+        <image-tank :img-list="imgList"/>
     </div>
-    <div class="box-container">
-      <Box v-for="house in houseList" :key="house.id" :id="house.id" />
-    </div>
-    <div class="image-container">
-      <draggable-image v-for="img in imgList" :key="img.id" :id="img.id" :drag-to="img.dragTo" :name="img.name" />
-    </div>
-  </div>
 </template>
 
 <script>
-  import Box from "@/components/Box";
-  import DraggableImage from "@/components/DraggableImage";
+    import Box from "@/components/Box";
+    import ImageTank from "@/components/ImageTank";
 
-export default {
-  name: 'App',
-  components: {
-    DraggableImage,
-    Box
-  },
-  mounted() {
-    this.$on('image:added', (id) => {
-      this.imgList.splice(this.imgList.findIndex(img => img.id === id), 1);
-    });
-  },
-  data() {
-    return {
-      houseList: [
-        { id: 'house-0' },
-        { id: 'house-1' },
-        { id: 'house-2' },
-        { id: 'house-3' },
-        { id: 'house-4' },
-        { id: 'house-5' },
-        { id: 'house-6' },
-        { id: 'house-7' },
-        { id: 'house-8' },
-        { id: 'house-9' },
-      ],
-      buildingList: [
-        { id: 'building-0' },
-        { id: 'building-1' },
-        { id: 'building-2' },
-        { id: 'building-3' },
-        { id: 'building-4' },
-        { id: 'building-5' },
-      ],
-      imgList: [
-        {
-          id: 'img-0',
-          dragTo: 'house-0',
-          name: '001.png'
+    export default {
+        name: 'App',
+        components: {
+            Box,
+            ImageTank
         },
-        {
-          id: 'img-1',
-          dragTo: 'house-3',
-          name: '001.png'
+        mounted() {
+            const baseUrl = process.env.BASE_URL;
+            fetch(`${baseUrl}data/data.json`, {mode: 'cors'})
+                    .then(resp => resp.json())
+                    .then((data) => {
+                        this.imgList = data.imgList;
+                        this.houseList = data.cards.houseList;
+                        this.buildingList = data.cards.buildingList;
+                    });
+
+
+            this.$on('image:added', (id) => {
+                this.imgList.splice(this.imgList.findIndex(img => img.id === id), 1);
+            });
         },
-        {
-          id: 'img-2',
-          dragTo: 'house-4',
-          name: '001.png'
+        data() {
+            return {
+                houseList: [],
+                buildingList: [],
+                imgList: []
+            }
         },
-        {
-          id: 'img-4',
-          dragTo: 'house-2',
-          name: '001.png'
-        },
-        {
-          id: 'img-5',
-          dragTo: 'house-5',
-          name: '001.png'
+        method: {
+            handleImageAdd(id) {
+                console.log(id);
+
+            }
         }
-      ]
     }
-  },
-  method: {
-    handleImageAdd(id) {
-      console.log(id);
-
-    }
-  }
-}
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+    body {
+        margin: 0;
+    }
+    #app {
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 60px;
+    }
 
-.box-container {
-  display: grid;
-  grid-auto-flow:column;
-  grid-column-gap: .8rem;
-}
+    h1, h2, h3 {
+        color: #3b92ad;
+    }
 
-  .image-container {
-    position: fixed;
-    width: 100%;
-    bottom: 10px;
-    left: 10px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 75px);
-    grid-column-gap: .8rem;
-    grid-template-rows: 1fr;
-  }
+    .box-container {
+        .house-container,
+        .building-container {
+            display: flex;
+            align-items: end;
+            margin: 2em 0;
+
+            h2 {
+                display: flex;
+                writing-mode: vertical-lr;
+                transform: rotate(180deg);
+            }
+
+            .box-tank {
+                display: grid;
+                grid-template-columns: repeat(40, 150px);
+                grid-column-gap: .8rem;
+            }
+        }
+    }
 </style>

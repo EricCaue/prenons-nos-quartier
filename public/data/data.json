@@ -1,0 +1,131 @@
+{
+  "cards": {
+    "houseList": [
+      { "id": "house-0" },
+      { "id": "house-1" },
+      { "id": "house-2" },
+      { "id": "house-3" },
+      { "id": "house-4" },
+      { "id": "house-5" },
+      { "id": "house-6" },
+      { "id": "house-7" },
+      { "id": "house-8" },
+      { "id": "house-9" }
+    ],
+    "buildingList": [
+      { "id": "building-0" },
+      { "id": "building-1" },
+      { "id": "building-2" },
+      { "id": "building-3" },
+      { "id": "building-4" },
+      { "id": "building-5" }
+    ]
+  },
+  "imgList": [
+    {
+      "id": "img-0",
+      "dragTo": "house-0",
+      "name": "001.png"
+    },
+    {
+      "id": "img-1",
+      "dragTo": "house-3",
+      "name": "001.png"
+    },
+    {
+      "id": "img-2",
+      "dragTo": "house-4",
+      "name": "001.png"
+    },
+    {
+      "id": "img-4",
+      "dragTo": "house-2",
+      "name": "001.png"
+    },
+    {
+      "id": "img-5",
+      "dragTo": "house-5",
+      "name": "001.png"
+    },
+    {
+      "id": "img-6",
+      "dragTo": "house-6",
+      "name": "001.png"
+    },
+    {
+      "id": "img-7",
+      "dragTo": "house-7",
+      "name": "001.png"
+    },
+    {
+      "id": "img-8",
+      "dragTo": "house-8",
+      "name": "001.png"
+    },
+    {
+      "id": "img-9",
+      "dragTo": "house-9",
+      "name": "001.png"
+    },
+    {
+      "id": "img-10",
+      "dragTo": "house-10",
+      "name": "001.png"
+    },
+    {
+      "id": "img-11",
+      "dragTo": "house-11",
+      "name": "001.png"
+    },
+    {
+      "id": "img-12",
+      "dragTo": "house-12",
+      "name": "001.png"
+    },
+    {
+      "id": "img-13",
+      "dragTo": "house-13",
+      "name": "001.png"
+    },
+    {
+      "id": "img-14",
+      "dragTo": "house-14",
+      "name": "001.png"
+    },
+    {
+      "id": "img-15",
+      "dragTo": "house-15",
+      "name": "001.png"
+    },
+    {
+      "id": "img-16",
+      "dragTo": "house-16",
+      "name": "001.png"
+    },
+    {
+      "id": "img-17",
+      "dragTo": "house-17",
+      "name": "001.png"
+    },
+    {
+      "id": "img-18",
+      "dragTo": "house-18",
+      "name": "001.png"
+    },
+    {
+      "id": "img-19",
+      "dragTo": "house-19",
+      "name": "001.png"
+    },
+    {
+      "id": "img-20",
+      "dragTo": "house-20",
+      "name": "001.png"
+    },
+    {
+      "id": "img-21",
+      "dragTo": "house-21",
+      "name": "001.png"
+    }
+  ]
+}
