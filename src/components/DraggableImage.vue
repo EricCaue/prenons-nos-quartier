@@ -23,18 +23,23 @@
     $width: 150px;
     $height: 230px;
     .image {
+        overflow: hidden;
+        display: flex;
+        margin: auto;
+        justify-content: center;
+        align-items: center;
         width: $width * .5;
         height: $height * .5;
         cursor: grabbing;
         transition: all .25s ease;
 
         img {
-            width: $width * .5;
-            height: $height * .5;
+            height: 100%;
+            width: auto;
         }
 
         &:hover {
-            transform: scale(1.03);
+            transform: scale(1.1);
             border-color: #a1a1a1;
         }
     }

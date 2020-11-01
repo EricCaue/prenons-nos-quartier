@@ -34,6 +34,7 @@
     $width: 150px;
     $height: 230px;
     .box {
+        overflow: hidden;
         display: flex;
         margin: auto;
         width: $width;
@@ -42,6 +43,7 @@
         border-radius: 10px;
         cursor: pointer;
         transition: all .25s ease;
+        align-items: center;
 
         &.success {
             transition: all .5s ease-in-out;

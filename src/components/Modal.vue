@@ -37,7 +37,7 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .modal-mask {
         position: fixed;
         z-index: 9998;
@@ -82,17 +82,17 @@
         }
 
         &.error {
-            color: #ad3b4c;
+            color: #ad833b;
             h3 {
-                color: #ad3b4c;
+                color: #ad833b;
             }
 
             .modal-default-button {
-                background-color: #ad3b4c;
+                background-color: #ad833b;
 
                 &:hover,
                 &:focus {
-                    background-color: darken(#ad3b4c, 15%);
+                    background-color: darken(#ad833b, 15%);
                 }
             }
         }
