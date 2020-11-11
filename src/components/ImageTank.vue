@@ -29,18 +29,19 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '../assets/style/variables';
     .image-tank {
         position: fixed;
         bottom: 10px;
         left: 10px;
         display: flex;
-        align-items: end;
+        align-items: flex-end;
         width: 100%;
         height: 130px;
         max-width: calc(100vw - 60px);
         padding: .6em;
-        border-radius: 10px;
-        background-color: #556889;
+        border-radius: .8em;
+        background-color: $secondary;
         transition: max-width .3s ease;
         overflow: hidden;
 

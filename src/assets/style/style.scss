@@ -1,0 +1,15 @@
+@import "variables";
+@import "button";
+
+body {
+  margin: 0;
+  padding-top: 30px;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: darken($primary, 20);
+}
+
+h1, h2, h3 {
+  color: $primary;
+}

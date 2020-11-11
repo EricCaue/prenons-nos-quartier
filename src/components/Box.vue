@@ -31,14 +31,12 @@
 </script>
 
 <style lang="scss" scoped>
-    $width: 150px;
-    $height: 230px;
     .box {
         overflow: hidden;
         display: flex;
         margin: auto;
-        width: $width;
-        height: $height;
+        width: 100%;
+        height: 100%;
         border: 2px dashed #d2d2d2;
         border-radius: 10px;
         cursor: pointer;
