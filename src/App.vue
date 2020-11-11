@@ -16,7 +16,10 @@
                 <Box v-for="building in buildingList" :key="building.id" :id="building.id"/>
             </div>
         </div>
-        <image-tank :img-list="imgList"/>
+        <image-tank
+                @mouseenter="disableScroll"
+                @mouseleave="enableScroll"
+                :img-list="imgList"/>
         <modal v-if="showModal"
                :state="modalState"
                @close="showModal = false">
@@ -54,6 +57,8 @@
         },
         mounted() {
             const baseUrl = process.env.BASE_URL;
+
+            // we fetch datas from the json file
             fetch(`${baseUrl}data/data.json`, {mode: 'cors'})
                     .then(resp => resp.json())
                     .then((data) => {
@@ -62,8 +67,10 @@
                         this.buildingList = data.cards.buildingList;
                     });
 
-            window.addEventListener( "mousemove", this.handleMousemove, false );
+            // Handle the mouseevent to scroll the window when mouse approaching the edge
+            this.enableScroll();
 
+            // Handle the image add ok event
             this.$on('image:added', (id) => {
                 this.imgList.splice(this.imgList.findIndex(img => img.id === id), 1);
                 this.showModal = true;
@@ -71,6 +78,7 @@
                 this.modalState = 'success';
             });
 
+            // Handle the image add not ok event
             this.$on('image:error', () => {
                 this.showModal = true;
                 this.modalContent = 'Désolé ce n\'est pas la bonne image !';
@@ -88,6 +96,15 @@
             }
         },
         methods: {
+            disableScroll() {
+                console.log('enter');
+                window.removeEventListener( "mousemove", this.handleMousemove, false );
+            },
+            enableScroll() {
+                console.log('leave');
+                window.addEventListener( "mousemove", this.handleMousemove, false );
+            },
+            // Used to put window on fullscreen
             openFullScreen() {
                 let elem = document.documentElement;
                 if (elem.requestFullscreen) {
@@ -98,6 +115,7 @@
                     elem.msRequestFullscreen();
                 }
             },
+            // Used to go out fullscreen
             closeFullscreen() {
                 if (document.exitFullscreen) {
                     document.exitFullscreen();
@@ -107,6 +125,7 @@
                     document.msExitFullscreen();
                 }
             },
+            // Used to handle window move with mouse move.
             handleMousemove(event) {
                 // Get the viewport-relative coordinates of the mousemove event.
                 let viewportX = event.clientX;
@@ -212,40 +231,40 @@
                     // gets the viewport edge. As such, we'll calculate the percentage that
                     // the user has made it "through the edge" when calculating the delta.
                     // Then, that use that percentage to back-off from the "max" step value.
-                    let maxStep = 50;
+                    let maxStep = 200;
 
                     // Should we scroll left?
                     if (isInLeftEdge && canScrollLeft) {
                         let intensity = ((edgeLeft - viewportX) / edgeSize);
 
-                        nextScrollX = (nextScrollX - (maxStep * intensity));
+                        nextScrollX = (nextScrollX - (maxStep * intensity / 15));
 
                         // Should we scroll right?
                     } else if (isInRightEdge && canScrollRight) {
                         let intensity = ((viewportX - edgeRight) / edgeSize);
 
-                        nextScrollX = (nextScrollX + (maxStep * intensity));
+                        nextScrollX = (nextScrollX + (maxStep * intensity / 15));
                     }
 
                     // Should we scroll up?
                     if (isInTopEdge && canScrollUp) {
                         let intensity = ((edgeTop - viewportY) / edgeSize);
 
-                        nextScrollY = (nextScrollY - (maxStep * intensity));
+                        nextScrollY = (nextScrollY - (maxStep * intensity / 15));
 
                         // Should we scroll down?
                     } else if (isInBottomEdge && canScrollDown) {
                         let intensity = ((viewportY - edgeBottom) / edgeSize);
 
-                        nextScrollY = (nextScrollY + (maxStep * intensity ));
+                        nextScrollY = (nextScrollY + (maxStep * intensity / 15));
                     }
 
                     // Sanitize invalid maximums. An invalid scroll offset won't break the
                     // subsequent .scrollTo() call; however, it will make it harder to
                     // determine if the .scrollTo() method should have been called in the
                     // first place.
-                    nextScrollX = Math.max(0, Math.min( maxScrollX, nextScrollX));
-                    nextScrollY = Math.max(0, Math.min( maxScrollY, nextScrollY));
+                    nextScrollX = Math.max(0, Math.min(maxScrollX, nextScrollX));
+                    nextScrollY = Math.max(0, Math.min(maxScrollY, nextScrollY));
 
                     if (
                             (nextScrollX !== currentScrollX) ||
