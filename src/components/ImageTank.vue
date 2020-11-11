@@ -38,7 +38,7 @@
 
         .image-container {
             overflow: auto;
-            height: calc(100vh - 12em);
+            height: calc(100vh - 16em);
             width: 100%;
             display: grid;
             grid-template-columns: repeat(auto-fit, 100%);
