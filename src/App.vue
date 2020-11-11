@@ -1,6 +1,5 @@
 <template>
     <div id="app">
-        <button @click="openFullScreen" class="btn btn-fullscreen">Plein écran</button>
         <div class="timeline">
             <img src="@/assets/frise.png" alt="frise temporelle">
         </div>
@@ -16,10 +15,13 @@
                 <Box v-for="building in buildingList" :key="building.id" :id="building.id"/>
             </div>
         </div>
-        <image-tank
-                :method-over="disableScroll"
-                :method-leave="enableScroll"
-                :img-list="imgList"/>
+        <div class="tools-container">
+            <button @click="openFullScreen" class="btn btn-inverse btn-fullscreen">Plein écran</button>
+            <image-tank
+                    :method-over="disableScroll"
+                    :method-leave="enableScroll"
+                    :img-list="imgList"/>
+        </div>
         <modal v-if="showModal"
                :state="modalState"
                @close="showModal = false">
@@ -140,7 +142,8 @@
                 let edgeLeft = edgeSize;
                 let edgeRight = (viewportWidth - edgeSize);
 
-                let isInLeftEdge = (viewportX < edgeLeft);
+                console.log(viewportX);
+                let isInLeftEdge = (viewportX >= 100 && viewportX < edgeLeft + 100);
                 let isInRightEdge = (viewportX > edgeRight);
 
                 // If the mouse is not in the viewport edge, there's no need to calculate
@@ -234,7 +237,7 @@
                     nextScrollX = Math.max(0, Math.min(maxScrollX, nextScrollX));
 
                     if ((nextScrollX !== currentScrollX)) {
-                        window.scrollTo(nextScrollX);
+                        window.scrollTo(nextScrollX, 0);
                         return true;
                     } else {
                         return false;
@@ -247,19 +250,24 @@
 </script>
 
 <style lang="scss">
+    @import './assets/style/variables';
     $caseHeight: 23vh;
     $caseWidth: $caseHeight * .7;
     #app {
+        padding-left: 150px;
         display: grid;
         grid-template-rows: repeat(4, $caseHeight);
         grid-template-columns: 1fr;
         grid-gap: 2vh;
     }
 
-    .btn-fullscreen {
+    .tools-container {
         position: fixed;
-        top: 15px;
-        left: 15px;
+        top: 0;
+        left: 0;
+        height: 100%;
+        padding: .6em;
+        background-color: $primary;
     }
 
     .timeline {
