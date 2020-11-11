@@ -17,8 +17,8 @@
             </div>
         </div>
         <image-tank
-                @mouseenter="disableScroll"
-                @mouseleave="enableScroll"
+                :method-over="disableScroll"
+                :method-leave="enableScroll"
                 :img-list="imgList"/>
         <modal v-if="showModal"
                :state="modalState"
@@ -129,29 +129,23 @@
             handleMousemove(event) {
                 // Get the viewport-relative coordinates of the mousemove event.
                 let viewportX = event.clientX;
-                let viewportY = event.clientY;
 
                 // Get the viewport dimensions.
                 let viewportWidth = document.documentElement.clientWidth;
-                let viewportHeight = document.documentElement.clientHeight;
 
                 // Next, we need to determine if the mouse is within the "edge" of the
                 // viewport, which may require scrolling the window. To do this, we need to
                 // calculate the boundaries of the edge in the viewport (these coordinates
                 // are relative to the viewport grid system).
-                let edgeTop = edgeSize;
                 let edgeLeft = edgeSize;
-                let edgeBottom = (viewportHeight - edgeSize);
                 let edgeRight = (viewportWidth - edgeSize);
 
                 let isInLeftEdge = (viewportX < edgeLeft);
                 let isInRightEdge = (viewportX > edgeRight);
-                let isInTopEdge = (viewportY < edgeTop);
-                let isInBottomEdge = (viewportY > edgeBottom);
 
                 // If the mouse is not in the viewport edge, there's no need to calculate
                 // anything else.
-                if (!(isInLeftEdge || isInRightEdge || isInTopEdge || isInBottomEdge)) {
+                if (!(isInLeftEdge || isInRightEdge)) {
                     clearTimeout(timer);
                     return;
                 }
@@ -172,20 +166,11 @@
                         document.documentElement.offsetWidth,
                         document.documentElement.clientWidth
                 );
-                let documentHeight = Math.max(
-                        document.body.scrollHeight,
-                        document.body.offsetHeight,
-                        document.body.clientHeight,
-                        document.documentElement.scrollHeight,
-                        document.documentElement.offsetHeight,
-                        document.documentElement.clientHeight
-                );
 
                 // Calculate the maximum scroll offset in each direction. Since you can only
                 // scroll the overflow portion of the document, the maximum represents the
                 // length of the document that is NOT in the viewport.
                 let maxScrollX = (documentWidth - viewportWidth);
-                let maxScrollY = (documentHeight - viewportHeight);
 
                 // As we examine the mousemove event, we want to adjust the window scroll in
                 // immediate response to the event; but, we also want to continue adjusting
@@ -211,11 +196,8 @@
                 function adjustWindowScroll() {
                     // Get the current scroll position of the document.
                     let currentScrollX = window.pageXOffset;
-                    let currentScrollY = window.pageYOffset;
 
                     // Determine if the window can be scrolled in any particular direction.
-                    let canScrollUp = ( currentScrollY > 0 );
-                    let canScrollDown = ( currentScrollY < maxScrollY );
                     let canScrollLeft = ( currentScrollX > 0 );
                     let canScrollRight = ( currentScrollX < maxScrollX );
 
@@ -224,7 +206,6 @@
                     // Each of these values can then be adjusted independently in the logic
                     // below.
                     let nextScrollX = currentScrollX;
-                    let nextScrollY = currentScrollY;
 
                     // As we examine the mouse position within the edge, we want to make the
                     // incremental scroll changes more "intense" the closer that the user
@@ -246,31 +227,14 @@
                         nextScrollX = (nextScrollX + (maxStep * intensity / 15));
                     }
 
-                    // Should we scroll up?
-                    if (isInTopEdge && canScrollUp) {
-                        let intensity = ((edgeTop - viewportY) / edgeSize);
-
-                        nextScrollY = (nextScrollY - (maxStep * intensity / 15));
-
-                        // Should we scroll down?
-                    } else if (isInBottomEdge && canScrollDown) {
-                        let intensity = ((viewportY - edgeBottom) / edgeSize);
-
-                        nextScrollY = (nextScrollY + (maxStep * intensity / 15));
-                    }
-
                     // Sanitize invalid maximums. An invalid scroll offset won't break the
                     // subsequent .scrollTo() call; however, it will make it harder to
                     // determine if the .scrollTo() method should have been called in the
                     // first place.
                     nextScrollX = Math.max(0, Math.min(maxScrollX, nextScrollX));
-                    nextScrollY = Math.max(0, Math.min(maxScrollY, nextScrollY));
 
-                    if (
-                            (nextScrollX !== currentScrollX) ||
-                            (nextScrollY !== currentScrollY)
-                    ) {
-                        window.scrollTo(nextScrollX, nextScrollY);
+                    if ((nextScrollX !== currentScrollX)) {
+                        window.scrollTo(nextScrollX);
                         return true;
                     } else {
                         return false;
@@ -289,7 +253,7 @@
         display: grid;
         grid-template-rows: repeat(4, $caseHeight);
         grid-template-columns: 1fr;
-        grid-gap: 15px;
+        grid-gap: 2vh;
     }
 
     .btn-fullscreen {
