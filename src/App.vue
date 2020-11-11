@@ -162,12 +162,12 @@
                 // viewport, which may require scrolling the window. To do this, we need to
                 // calculate the boundaries of the edge in the viewport (these coordinates
                 // are relative to the viewport grid system).
-                let edgeLeft = edgeSize;
+                let edgeLeft = edgeSize + 100;
                 let edgeRight = (viewportWidth - edgeSize);
 
-                console.log(viewportX);
-                let isInLeftEdge = (viewportX >= 100 && viewportX < edgeLeft + 100);
+                let isInLeftEdge = (viewportX > 100 && viewportX < edgeLeft);
                 let isInRightEdge = (viewportX > edgeRight);
+
 
                 // If the mouse is not in the viewport edge, there's no need to calculate
                 // anything else.
