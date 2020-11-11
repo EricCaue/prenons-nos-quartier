@@ -32,6 +32,7 @@
         height: $height * .5;
         cursor: grabbing;
         transition: all .25s ease;
+        justify-items: center;
 
         img {
             height: 100%;

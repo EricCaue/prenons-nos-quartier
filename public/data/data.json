@@ -25,7 +25,8 @@
     {
       "id": "img-0",
       "dragTo": "house-0",
-      "name": "001.png"
+      "name": "001.png",
+      "help": "Ceci est une aide"
     },
     {
       "id": "img-1",
@@ -127,5 +128,8 @@
       "dragTo": "house-21",
       "name": "001.png"
     }
+  ],
+  "globalHelp": [
+
   ]
 }

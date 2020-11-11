@@ -16,7 +16,22 @@
             </div>
         </div>
         <div class="tools-container">
-            <button @click="openFullScreen" class="btn btn-inverse btn-fullscreen">Plein écran</button>
+            <h3>Barre d'outils</h3>
+            <div class="buttons-container">
+                <button @click="toggleFullScreen" class="btn btn-inverse btn-fullscreen">
+                    <svg v-if="!isFullscreen" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20">
+                        <path  fill="currentColor" d="M0 180V56c0-13.3 10.7-24 24-24h124c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H64v84c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12zM288 44v40c0 6.6 5.4 12 12 12h84v84c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12V56c0-13.3-10.7-24-24-24H300c-6.6 0-12 5.4-12 12zm148 276h-40c-6.6 0-12 5.4-12 12v84h-84c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h124c13.3 0 24-10.7 24-24V332c0-6.6-5.4-12-12-12zM160 468v-40c0-6.6-5.4-12-12-12H64v-84c0-6.6-5.4-12-12-12H12c-6.6 0-12 5.4-12 12v124c0 13.3 10.7 24 24 24h124c6.6 0 12-5.4 12-12z"></path>
+                    </svg>
+                    <svg v-if="isFullscreen" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512">
+                        <path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
+                    </svg>
+                </button>
+                <button @click="openGlobalHelp" class="btn btn-inverse">
+                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="20">
+                        <path fill="currentColor" d="M202.021 0C122.202 0 70.503 32.703 29.914 91.026c-7.363 10.58-5.093 25.086 5.178 32.874l43.138 32.709c10.373 7.865 25.132 6.026 33.253-4.148 25.049-31.381 43.63-49.449 82.757-49.449 30.764 0 68.816 19.799 68.816 49.631 0 22.552-18.617 34.134-48.993 51.164-35.423 19.86-82.299 44.576-82.299 106.405V320c0 13.255 10.745 24 24 24h72.471c13.255 0 24-10.745 24-24v-5.773c0-42.86 125.268-44.645 125.268-160.627C377.504 66.256 286.902 0 202.021 0zM192 373.459c-38.196 0-69.271 31.075-69.271 69.271 0 38.195 31.075 69.27 69.271 69.27s69.271-31.075 69.271-69.271-31.075-69.27-69.271-69.27z"></path>
+                    </svg>
+                </button>
+            </div>
             <image-tank
                     :method-over="disableScroll"
                     :method-leave="enableScroll"
@@ -94,7 +109,8 @@
                 imgList: [],
                 showModal: false,
                 modalContent: '',
-                modalState: 'success'
+                modalState: 'success',
+                isFullscreen: false
             }
         },
         methods: {
@@ -106,26 +122,31 @@
                 console.log('leave');
                 window.addEventListener( "mousemove", this.handleMousemove, false );
             },
-            // Used to put window on fullscreen
-            openFullScreen() {
-                let elem = document.documentElement;
-                if (elem.requestFullscreen) {
-                    elem.requestFullscreen();
-                } else if (elem.webkitRequestFullscreen) { /* Safari */
-                    elem.webkitRequestFullscreen();
-                } else if (elem.msRequestFullscreen) { /* IE11 */
-                    elem.msRequestFullscreen();
-                }
+            openGlobalHelp() {
+              console.log('help opened');
             },
-            // Used to go out fullscreen
-            closeFullscreen() {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) { /* Safari */
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) { /* IE11 */
-                    document.msExitFullscreen();
+            // Used to toggle window on/off fullscreen
+            toggleFullScreen() {
+                let elem = document.documentElement;
+                if(!this.isFullscreen) {
+                    if (elem.requestFullscreen) {
+                        elem.requestFullscreen();
+                    } else if (elem.webkitRequestFullscreen) { /* Safari */
+                        elem.webkitRequestFullscreen();
+                    } else if (elem.msRequestFullscreen) { /* IE11 */
+                        elem.msRequestFullscreen();
+                    }
+                } else {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.webkitExitFullscreen) { /* Safari */
+                        document.webkitExitFullscreen();
+                    } else if (document.msExitFullscreen) { /* IE11 */
+                        document.msExitFullscreen();
+                    }
                 }
+
+                this.isFullscreen = !this.isFullscreen;
             },
             // Used to handle window move with mouse move.
             handleMousemove(event) {
@@ -251,23 +272,54 @@
 
 <style lang="scss">
     @import './assets/style/variables';
+
     $caseHeight: 23vh;
     $caseWidth: $caseHeight * .7;
     #app {
-        padding-left: 150px;
+        padding-left: 180px;
         display: grid;
-        grid-template-rows: repeat(4, $caseHeight);
+        grid-template-rows: repeat(3, $caseHeight);
         grid-template-columns: 1fr;
         grid-gap: 2vh;
     }
 
     .tools-container {
         position: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         top: 0;
         left: 0;
         height: 100%;
+        width: 150px;
         padding: .6em;
         background-color: $primary;
+
+        h3 {
+            color: #ffffff;
+            text-align: center;
+            font-size: 16px;
+            margin-left: 0;
+        }
+
+        .buttons-container {
+            .btn {
+                margin: 1em 0;
+                width: 3.3em;
+                height: 3.3em;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
     }
 
     .timeline {

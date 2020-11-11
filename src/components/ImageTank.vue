@@ -28,26 +28,17 @@
 <style lang="scss" scoped>
     @import '../assets/style/variables';
     .image-tank {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        justify-content: center;
-        overflow: auto;
-
-        h3 {
-            color: #ffffff;
-            display: flex;
-            font-size: 16px;
-            margin-left: 0;
-        }
+        margin-top: 1em;
 
         .image-container {
             overflow: auto;
+            height: calc(100vh - 12em);
             width: 100%;
             display: grid;
-            grid-template-columns: repeat(auto-fit, 75px);
+            grid-template-columns: repeat(auto-fit, 100%);
             grid-column-gap: .8rem;
             grid-template-rows: 1fr;
+            justify-items: center;
         }
 
         .btn-toggle {
@@ -64,15 +55,5 @@
                 transform: rotate(180deg);
             }
         }
-
-        /*&.closed {*/
-        /*    max-width: 130px;*/
-
-        /*    .btn-toggle {*/
-        /*        svg {*/
-        /*            transform: rotate(0deg);*/
-        /*        }*/
-        /*    }*/
-        /*}*/
     }
 </style>
