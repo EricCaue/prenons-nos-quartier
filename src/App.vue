@@ -18,7 +18,7 @@
         <div class="tools-container">
             <h3>Barre d'outils</h3>
             <div class="buttons-container">
-                <button @click="toggleFullScreen" class="btn btn-inverse btn-fullscreen">
+                <button @click="toggleFullScreen" class="btn btn-inverse btn-fullscreen" v-tooltip.right="fullscreenHelp">
                     <svg v-if="!isFullscreen" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20">
                         <path  fill="currentColor" d="M0 180V56c0-13.3 10.7-24 24-24h124c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H64v84c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12zM288 44v40c0 6.6 5.4 12 12 12h84v84c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12V56c0-13.3-10.7-24-24-24H300c-6.6 0-12 5.4-12 12zm148 276h-40c-6.6 0-12 5.4-12 12v84h-84c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h124c13.3 0 24-10.7 24-24V332c0-6.6-5.4-12-12-12zM160 468v-40c0-6.6-5.4-12-12-12H64v-84c0-6.6-5.4-12-12-12H12c-6.6 0-12 5.4-12 12v124c0 13.3 10.7 24 24 24h124c6.6 0 12-5.4 12-12z"></path>
                     </svg>
@@ -26,7 +26,7 @@
                         <path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
                     </svg>
                 </button>
-                <button @click="openGlobalHelp" class="btn btn-inverse">
+                <button @click="openGlobalHelp" class="btn btn-inverse" v-tooltip.right="'Besoin d\'aide pour jouer ?'">
                     <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="20">
                         <path fill="currentColor" d="M202.021 0C122.202 0 70.503 32.703 29.914 91.026c-7.363 10.58-5.093 25.086 5.178 32.874l43.138 32.709c10.373 7.865 25.132 6.026 33.253-4.148 25.049-31.381 43.63-49.449 82.757-49.449 30.764 0 68.816 19.799 68.816 49.631 0 22.552-18.617 34.134-48.993 51.164-35.423 19.86-82.299 44.576-82.299 106.405V320c0 13.255 10.745 24 24 24h72.471c13.255 0 24-10.745 24-24v-5.773c0-42.86 125.268-44.645 125.268-160.627C377.504 66.256 286.902 0 202.021 0zM192 373.459c-38.196 0-69.271 31.075-69.271 69.271 0 38.195 31.075 69.27 69.271 69.27s69.271-31.075 69.271-69.271-31.075-69.27-69.271-69.27z"></path>
                     </svg>
@@ -110,7 +110,8 @@
                 showModal: false,
                 modalContent: '',
                 modalState: 'success',
-                isFullscreen: false
+                isFullscreen: false,
+                fullscreenHelp: 'Afficher en plein écran'
             }
         },
         methods: {
@@ -136,6 +137,7 @@
                     } else if (elem.msRequestFullscreen) { /* IE11 */
                         elem.msRequestFullscreen();
                     }
+                    this.fullscreenHelp = 'Arrêter le plein écran';
                 } else {
                     if (document.exitFullscreen) {
                         document.exitFullscreen();

@@ -3,14 +3,15 @@
           effect-allowed="move"
           drop-effect="move"
           :transfer-data="{ id: id, dragTo: dragTo, imageName: name }">
-        <img :src="publicPath + 'images/' + name" alt="">
+        <img :src="publicPath + 'images/' + name"
+             alt="">
     </drag>
 </template>
 
 <script>
     export default {
         name: "DraggableImage",
-        props: ['id', 'dragTo', 'name'],
+        props: ['id', 'dragTo', 'name', 'help'],
         data() {
             return {
                 publicPath: process.env.BASE_URL
