@@ -110,6 +110,10 @@
         }
     }
 
+    .modal-footer {
+        display: flex;
+        justify-content: center;
+    }
     .modal-default-button {
         cursor: pointer;
         color: #FFF;
