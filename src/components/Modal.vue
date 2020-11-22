@@ -67,6 +67,16 @@
         transition: all 0.3s ease;
         font-family: Helvetica, Arial, sans-serif;
 
+        .modal-default-button {
+          background-color: #3b92ad;
+          margin: 0 .5rem;
+
+          &:hover,
+          &:focus {
+            background-color: darken(#3b92ad, 15%);
+          }
+        }
+
         &.success {
             color: #3b92ad;
             h3 {

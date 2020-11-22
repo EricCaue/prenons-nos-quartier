@@ -1,7 +1,26 @@
 <template>
   <div class="tuto-container" :class="{'hidden': !isOpen}">
     <canvas ref="tutorialCanvas" :width="windowWidth" :height="windowHeight"></canvas>
-    <div class="navigation-container">
+    <modal v-if="isLoad">
+      <template v-slot:header>
+        <h3>Bienvenue sur le jeu Prenons nos quartiers</h3>
+      </template>
+      <template v-slot:body>
+        <div>
+          <p>Dans ce jeu, vous allez devoir trouver et placer des bâtiments sur une frise chronologique en fonction de leur époque.</p>
+          <p>Un tutoriel est là pour te guider dans le jeu. Si tu as déjà joué tu peux le passer et commencer tout de suite.</p>
+        </div>
+      </template>
+      <template v-slot:footer>
+        <button class="modal-default-button" @click="startTuto">
+          Suivre le tutoriel
+        </button>
+        <button class="modal-default-button" @click="closeTuto">
+          Passer le tutoriel
+        </button>
+      </template>
+    </modal>
+    <div class="navigation-container" v-if="!isLoad">
       <div ref="navigationElement" class="navigation-element">
         <div>
           <ul>
@@ -20,7 +39,7 @@
         </div>
       </div>
     </div>
-    <div ref="explanationElement" data-alignment="t"
+    <div ref="explanationElement" v-if="!isLoad" data-alignment="t"
          class="pr-tutorial-explain">
       <h2 class="font-semibold uppercase mb-2">{{ title }}</h2>
       <p v-html="message"></p>
@@ -29,17 +48,22 @@
 </template>
 
 <script>
+import Modal from "@/components/Modal";
 export default {
   name: "Tuto",
-  components: {},
+  components: {Modal},
   props: {
     tutoOpen: {
+      type: Boolean
+    },
+    load: {
       type: Boolean
     }
   },
   data() {
     return {
       isOpen: this.tutoOpen,
+      isLoad: this.load,
       steps: [
         {
           id: 0,
@@ -77,7 +101,7 @@ export default {
   },
   mounted() {
     this.init();
-    if (this.tutoOpen) {
+    if (this.tutoOpen && !this.isLoad) {
       setTimeout(() => {
         this.placeExplanation(this.$refs.navigationElement, 't');
       }, 10)
@@ -87,11 +111,16 @@ export default {
     window.removeEventListener("resize", this.windowResize);
   },
   watch: {
+    load(newVal) {
+      this.isLoad = newVal;
+    },
     tutoOpen(newVal) {
       this.isOpen = newVal;
-      setTimeout(() => {
-        this.placeExplanation(this.$refs.navigationElement, 't');
-      }, 10)
+      if(!this.isLoad) {
+        setTimeout(() => {
+          this.placeExplanation(this.$refs.navigationElement, 't');
+        }, 10);
+      }
     }
   },
   methods: {
@@ -103,9 +132,17 @@ export default {
       this.context = this.$refs.tutorialCanvas.getContext('2d');
       this.fillCanvas();
     },
+    startTuto() {
+      this.isLoad = false;
+      setTimeout(() => {
+        this.placeExplanation(this.$refs.navigationElement, 't');
+      }, 10);
+    },
     closeTuto() {
       this.isOpen = false;
+      this.isLoad = false;
       this.$emit('update:tutoOpen', this.isOpen);
+      this.$emit('update:load', this.isLoad);
       this.init();
     },
     windowResize() {
