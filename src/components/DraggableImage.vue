@@ -3,20 +3,24 @@
           effect-allowed="move"
           drop-effect="move"
           :transfer-data="{ id: id, dragTo: dragTo, imageName: name }">
-        <img :src="publicPath + 'images/' + name"
-             alt="">
+        <img @click="openHelpModal" :src="publicPath + 'images/' + name" alt="">
     </drag>
 </template>
 
 <script>
     export default {
         name: "DraggableImage",
-        props: ['id', 'dragTo', 'name', 'help'],
+        props: ['id', 'dragTo', 'name', 'help', 'openModal'],
         data() {
             return {
                 publicPath: process.env.BASE_URL
             }
         },
+        methods: {
+            openHelpModal() {
+                this.$parent.$parent.$emit('open:modal', this.name);
+            }
+        }
     }
 </script>
 

@@ -18,17 +18,24 @@
         <div class="tools-container">
             <h3>Barre d'outils</h3>
             <div class="buttons-container">
-                <button @click="toggleFullScreen" class="btn btn-inverse btn-fullscreen" v-tooltip.right="fullscreenHelp">
-                    <svg v-if="!isFullscreen" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20">
-                        <path  fill="currentColor" d="M0 180V56c0-13.3 10.7-24 24-24h124c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H64v84c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12zM288 44v40c0 6.6 5.4 12 12 12h84v84c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12V56c0-13.3-10.7-24-24-24H300c-6.6 0-12 5.4-12 12zm148 276h-40c-6.6 0-12 5.4-12 12v84h-84c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h124c13.3 0 24-10.7 24-24V332c0-6.6-5.4-12-12-12zM160 468v-40c0-6.6-5.4-12-12-12H64v-84c0-6.6-5.4-12-12-12H12c-6.6 0-12 5.4-12 12v124c0 13.3 10.7 24 24 24h124c6.6 0 12-5.4 12-12z"></path>
+                <button @click="toggleFullScreen" class="btn btn-inverse btn-fullscreen"
+                        v-tooltip.right="fullscreenHelp">
+                    <svg v-if="!isFullscreen" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 448 512" width="20">
+                        <path fill="currentColor"
+                              d="M0 180V56c0-13.3 10.7-24 24-24h124c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H64v84c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12zM288 44v40c0 6.6 5.4 12 12 12h84v84c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12V56c0-13.3-10.7-24-24-24H300c-6.6 0-12 5.4-12 12zm148 276h-40c-6.6 0-12 5.4-12 12v84h-84c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h124c13.3 0 24-10.7 24-24V332c0-6.6-5.4-12-12-12zM160 468v-40c0-6.6-5.4-12-12-12H64v-84c0-6.6-5.4-12-12-12H12c-6.6 0-12 5.4-12 12v124c0 13.3 10.7 24 24 24h124c6.6 0 12-5.4 12-12z"></path>
                     </svg>
-                    <svg v-if="isFullscreen" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512">
-                        <path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
+                    <svg v-if="isFullscreen" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 352 512">
+                        <path fill="currentColor"
+                              d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
                     </svg>
                 </button>
                 <button @click="openGlobalHelp" class="btn btn-inverse" v-tooltip.right="'Besoin d\'aide pour jouer ?'">
-                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="20">
-                        <path fill="currentColor" d="M202.021 0C122.202 0 70.503 32.703 29.914 91.026c-7.363 10.58-5.093 25.086 5.178 32.874l43.138 32.709c10.373 7.865 25.132 6.026 33.253-4.148 25.049-31.381 43.63-49.449 82.757-49.449 30.764 0 68.816 19.799 68.816 49.631 0 22.552-18.617 34.134-48.993 51.164-35.423 19.86-82.299 44.576-82.299 106.405V320c0 13.255 10.745 24 24 24h72.471c13.255 0 24-10.745 24-24v-5.773c0-42.86 125.268-44.645 125.268-160.627C377.504 66.256 286.902 0 202.021 0zM192 373.459c-38.196 0-69.271 31.075-69.271 69.271 0 38.195 31.075 69.27 69.271 69.27s69.271-31.075 69.271-69.271-31.075-69.27-69.271-69.27z"></path>
+                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
+                         width="20">
+                        <path fill="currentColor"
+                              d="M202.021 0C122.202 0 70.503 32.703 29.914 91.026c-7.363 10.58-5.093 25.086 5.178 32.874l43.138 32.709c10.373 7.865 25.132 6.026 33.253-4.148 25.049-31.381 43.63-49.449 82.757-49.449 30.764 0 68.816 19.799 68.816 49.631 0 22.552-18.617 34.134-48.993 51.164-35.423 19.86-82.299 44.576-82.299 106.405V320c0 13.255 10.745 24 24 24h72.471c13.255 0 24-10.745 24-24v-5.773c0-42.86 125.268-44.645 125.268-160.627C377.504 66.256 286.902 0 202.021 0zM192 373.459c-38.196 0-69.271 31.075-69.271 69.271 0 38.195 31.075 69.27 69.271 69.27s69.271-31.075 69.271-69.271-31.075-69.27-69.271-69.27z"></path>
                     </svg>
                 </button>
             </div>
@@ -41,17 +48,20 @@
                :state="modalState"
                @close="showModal = false">
             <template v-slot:body>
-                <h3>{{modalContent}}</h3>
-                <svg v-if="modalState === 'success'" aria-hidden="true" focusable="false" role="img"
-                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                    <path fill="currentColor"
-                          d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"></path>
-                </svg>
-                <svg v-else aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg"
-                     viewBox="0 0 512 512">
-                    <path fill="currentColor"
-                          d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm101.8-262.2L295.6 256l62.2 62.2c4.7 4.7 4.7 12.3 0 17l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L256 295.6l-62.2 62.2c-4.7 4.7-12.3 4.7-17 0l-22.6-22.6c-4.7-4.7-4.7-12.3 0-17l62.2-62.2-62.2-62.2c-4.7-4.7-4.7-12.3 0-17l22.6-22.6c4.7-4.7 12.3-4.7 17 0l62.2 62.2 62.2-62.2c4.7-4.7 12.3-4.7 17 0l22.6 22.6c4.7 4.7 4.7 12.3 0 17z"></path>
-                </svg>
+                <h3 v-if="modalContent">{{modalContent}}</h3>
+                <p v-if="!modalHtml">
+                    <svg v-if="modalState === 'success'" aria-hidden="true" focusable="false" role="img"
+                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path fill="currentColor"
+                              d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"></path>
+                    </svg>
+                    <svg v-else aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 512 512">
+                        <path fill="currentColor"
+                              d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm101.8-262.2L295.6 256l62.2 62.2c4.7 4.7 4.7 12.3 0 17l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L256 295.6l-62.2 62.2c-4.7 4.7-12.3 4.7-17 0l-22.6-22.6c-4.7-4.7-4.7-12.3 0-17l62.2-62.2-62.2-62.2c-4.7-4.7-4.7-12.3 0-17l22.6-22.6c4.7-4.7 12.3-4.7 17 0l62.2 62.2 62.2-62.2c4.7-4.7 12.3-4.7 17 0l22.6 22.6c4.7 4.7 4.7 12.3 0 17z"></path>
+                    </svg>
+                </p>
+                <p v-if="modalHtml" v-html="modalHtml"></p>
             </template>
         </modal>
     </div>
@@ -72,6 +82,20 @@
             ImageTank,
             Modal
         },
+        data() {
+            return {
+                houseList: [],
+                buildingList: [],
+                imgList: [],
+                showModal: false,
+                modalHtml: null,
+                modalContent: null,
+                modalState: 'success',
+                isFullscreen: false,
+                fullscreenHelp: 'Afficher en plein écran',
+                publicPath: process.env.BASE_URL
+            }
+        },
         mounted() {
             const baseUrl = process.env.BASE_URL;
 
@@ -91,6 +115,7 @@
             this.$on('image:added', (id) => {
                 this.imgList.splice(this.imgList.findIndex(img => img.id === id), 1);
                 this.showModal = true;
+                this.modalHtml = null;
                 this.modalContent = 'Bravo !';
                 this.modalState = 'success';
             });
@@ -98,38 +123,32 @@
             // Handle the image add not ok event
             this.$on('image:error', () => {
                 this.showModal = true;
+                this.modalHtml = null;
                 this.modalContent = 'Désolé ce n\'est pas la bonne image !';
                 this.modalState = 'error';
             });
-        },
-        data() {
-            return {
-                houseList: [],
-                buildingList: [],
-                imgList: [],
-                showModal: false,
-                modalContent: '',
-                modalState: 'success',
-                isFullscreen: false,
-                fullscreenHelp: 'Afficher en plein écran'
-            }
+
+            this.$on('open:modal', (name) => {
+                this.showModal = true;
+                this.modalContent = null;
+                this.modalHtml = '<p><img src="' + this.publicPath + 'images/' + name + '" alt=""></p><p>Aide sur la maison</p>';
+                this.modalState = 'info';
+            })
         },
         methods: {
             disableScroll() {
-                console.log('enter');
-                window.removeEventListener( "mousemove", this.handleMousemove, false );
+                window.removeEventListener("mousemove", this.handleMousemove, false);
             },
             enableScroll() {
-                console.log('leave');
-                window.addEventListener( "mousemove", this.handleMousemove, false );
+                window.addEventListener("mousemove", this.handleMousemove, false);
             },
             openGlobalHelp() {
-              console.log('help opened');
+                console.log('help opened');
             },
             // Used to toggle window on/off fullscreen
             toggleFullScreen() {
                 let elem = document.documentElement;
-                if(!this.isFullscreen) {
+                if (!this.isFullscreen) {
                     if (elem.requestFullscreen) {
                         elem.requestFullscreen();
                     } else if (elem.webkitRequestFullscreen) { /* Safari */
@@ -224,8 +243,8 @@
                     let currentScrollX = window.pageXOffset;
 
                     // Determine if the window can be scrolled in any particular direction.
-                    let canScrollLeft = ( currentScrollX > 0 );
-                    let canScrollRight = ( currentScrollX < maxScrollX );
+                    let canScrollLeft = (currentScrollX > 0);
+                    let canScrollRight = (currentScrollX < maxScrollX);
 
                     // Since we can potentially scroll in two directions at the same time,
                     // let's keep track of the next scroll, starting with the current scroll.
