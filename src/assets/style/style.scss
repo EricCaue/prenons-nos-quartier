@@ -14,3 +14,11 @@ body {
 h1, h2, h3 {
   color: $primary;
 }
+
+h1 {
+  font-size: clamp(.7rem, unquote('-0.875rem + 8.333vh'), 2rem);
+}
+
+h2 {
+  font-size: clamp(.65rem, unquote('-0.875rem + 8.333vh'), 1.2rem);
+}
