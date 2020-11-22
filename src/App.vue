@@ -1,9 +1,10 @@
 <template>
-    <div id="app">
-        <div class="timeline">
+    <div id="app" :class="{'tuto-open': tutoOpen}">
+      <Tuto :tuto-open.sync="tutoOpen"></Tuto>
+        <div class="timeline" id="timeline">
             <img src="@/assets/frise.png" alt="frise temporelle">
         </div>
-        <div class="house-container">
+        <div class="house-container" id="house-container">
             <h2>Maisons</h2>
             <div class="box-tank">
                 <Box v-for="house in houseList" :key="house.id" :id="house.id"/>
@@ -15,7 +16,7 @@
                 <Box v-for="building in buildingList" :key="building.id" :id="building.id"/>
             </div>
         </div>
-        <div class="tools-container">
+        <div id="tools-container" class="tools-container">
             <h3>Barre d'outils</h3>
             <div class="buttons-container">
                 <button @click="toggleFullScreen" class="btn btn-inverse btn-fullscreen"
@@ -40,6 +41,7 @@
                 </button>
             </div>
             <image-tank
+                    id="image-tank"
                     :method-over="disableScroll"
                     :method-leave="enableScroll"
                     :img-list="imgList"/>
@@ -71,6 +73,7 @@
     import Box from "@/components/Box";
     import ImageTank from "@/components/ImageTank";
     import Modal from "@/components/Modal";
+    import Tuto from "@/components/Tuto";
 
     let edgeSize = 200;
     let timer = null;
@@ -80,7 +83,8 @@
         components: {
             Box,
             ImageTank,
-            Modal
+            Modal,
+            Tuto
         },
         data() {
             return {
@@ -93,7 +97,8 @@
                 modalState: 'success',
                 isFullscreen: false,
                 fullscreenHelp: 'Afficher en plein écran',
-                publicPath: process.env.BASE_URL
+                publicPath: process.env.BASE_URL,
+                tutoOpen: false
             }
         },
         mounted() {
@@ -143,7 +148,8 @@
                 window.addEventListener("mousemove", this.handleMousemove, false);
             },
             openGlobalHelp() {
-                console.log('help opened');
+              window.scrollTo(0, 0);
+              this.tutoOpen = !this.tutoOpen;
             },
             // Used to toggle window on/off fullscreen
             toggleFullScreen() {
@@ -227,14 +233,15 @@
                 // NOTE: There are probably better ways to handle the ongoing animation
                 // check. But, the point of this demo is really about the math logic, not so
                 // much about the interval logic.
+                if(!this.tutoOpen) {
+                  (function checkForWindowScroll() {
+                      clearTimeout(timer);
 
-                (function checkForWindowScroll() {
-                    clearTimeout(timer);
-
-                    if (adjustWindowScroll()) {
-                        timer = setTimeout(checkForWindowScroll, 30);
-                    }
-                })();
+                      if (adjustWindowScroll()) {
+                          timer = setTimeout(checkForWindowScroll, 30);
+                      }
+                  })();
+                }
 
                 // Adjust the window scroll based on the user's mouse position. Returns True
                 // or False depending on whether or not the window scroll was changed.
@@ -302,6 +309,18 @@
         grid-template-rows: repeat(3, $caseHeight);
         grid-template-columns: 1fr;
         grid-gap: 2vh;
+
+      &.tuto-open {
+        overflow: hidden;
+        max-width: calc(100% - 180px);
+
+        & .timeline,
+        & .house-container,
+        & .building-container {
+          overflow: hidden;
+          width: 100%;
+        }
+      }
     }
 
     .tools-container {
