@@ -1,19 +1,25 @@
 <template>
   <div id="app" :class="{'tuto-open': tutoOpen}">
-    <Tuto :tuto-open.sync="tutoOpen" :load.sync="isAtStart"></Tuto>
-    <div class="timeline" id="timeline">
-      <img src="@/assets/frise.png" alt="frise temporelle">
-    </div>
-    <div class="house-container" id="house-container">
-      <h2>Maisons</h2>
-      <div class="box-tank">
-        <Box v-for="house in houseList" :key="house.id" :id="house.id"/>
+    <Tuto :tuto-open.sync="tutoOpen" :help-list="helpList"></Tuto>
+    <h1>Le jeu du temps</h1>
+    <div class="content-container">
+      <div class="timeline" id="timeline">
+        <img src="@/assets/frise.png" alt="frise temporelle">
+        <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <path fill="currentColor" d="M444.52 3.52L28.74 195.42c-47.97 22.39-31.98 92.75 19.19 92.75h175.91v175.91c0 51.17 70.36 67.17 92.75 19.19l191.9-415.78c15.99-38.39-25.59-79.97-63.97-63.97z"></path>
+        </svg>
       </div>
-    </div>
-    <div class="building-container">
-      <h2>Immeubles</h2>
-      <div class="box-tank">
-        <Box v-for="building in buildingList" :key="building.id" :id="building.id"/>
+      <div class="house-container" id="house-container">
+        <h2>Habitat individuel</h2>
+        <div class="box-tank">
+          <Box v-for="house in houseList" :key="house.id" :id="house.id"/>
+        </div>
+      </div>
+      <div class="building-container">
+        <h2>Habitat collectif</h2>
+        <div class="box-tank">
+          <Box v-for="building in buildingList" :key="building.id" :id="building.id"/>
+        </div>
       </div>
     </div>
     <div id="tools-container" class="tools-container">
@@ -91,6 +97,7 @@ export default {
       houseList: [],
       buildingList: [],
       imgList: [],
+      helpList: [],
       showModal: false,
       modalHtml: null,
       modalContent: null,
@@ -98,8 +105,7 @@ export default {
       isFullscreen: false,
       fullscreenHelp: 'Afficher en plein écran',
       publicPath: process.env.BASE_URL,
-      tutoOpen: false,
-      isAtStart: false
+      tutoOpen: false
     }
   },
   mounted() {
@@ -112,6 +118,7 @@ export default {
           this.imgList = data.imgList;
           this.houseList = data.cards.houseList;
           this.buildingList = data.cards.buildingList;
+          this.helpList = data.globalHelp;
         });
 
     // Handle the mouseevent to scroll the window when mouse approaching the edge
@@ -142,7 +149,6 @@ export default {
     })
 
     this.tutoOpen = true;
-    this.isAtStart = true;
   },
   methods: {
     disableScroll() {
@@ -309,10 +315,6 @@ $caseHeight: 23vh;
 $caseWidth: $caseHeight * .7;
 #app {
   padding-left: 180px;
-  display: grid;
-  grid-template-rows: repeat(3, $caseHeight);
-  grid-template-columns: 1fr;
-  grid-gap: 2vh;
 
   &.tuto-open {
     overflow: hidden;
@@ -324,6 +326,35 @@ $caseWidth: $caseHeight * .7;
       overflow: hidden;
       width: 100%;
     }
+  }
+}
+
+.content-container {
+  display: grid;
+  grid-template-rows: repeat(3, $caseHeight);
+  grid-template-columns: 1fr;
+  grid-gap: 2vh;
+}
+
+.timeline {
+  position: relative;
+  &::after {
+    position: absolute;
+    content: "";
+    height: 5px;
+    width: 100%;
+    background: #151616;
+    bottom: 0;
+    left: 0;
+  }
+  .arrow {
+    color: #151616;
+    position: fixed;
+    top: calc(40px + 2rem + 23vh);
+    right: 5px;
+    width: 40px;
+    height: 40px;
+    transform: rotateZ(45deg);
   }
 }
 

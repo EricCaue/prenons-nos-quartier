@@ -1,26 +1,7 @@
 <template>
   <div class="tuto-container" :class="{'hidden': !isOpen}">
     <canvas ref="tutorialCanvas" :width="windowWidth" :height="windowHeight"></canvas>
-    <modal v-if="isLoad">
-      <template v-slot:header>
-        <h3>Bienvenue sur le jeu Prenons nos quartiers</h3>
-      </template>
-      <template v-slot:body>
-        <div>
-          <p>Dans ce jeu, vous allez devoir trouver et placer des bâtiments sur une frise chronologique en fonction de leur époque.</p>
-          <p>Un tutoriel est là pour te guider dans le jeu. Si tu as déjà joué tu peux le passer et commencer tout de suite.</p>
-        </div>
-      </template>
-      <template v-slot:footer>
-        <button class="modal-default-button" @click="startTuto">
-          Suivre le tutoriel
-        </button>
-        <button class="modal-default-button" @click="closeTuto">
-          Passer le tutoriel
-        </button>
-      </template>
-    </modal>
-    <div class="navigation-container" v-if="!isLoad">
+    <div class="navigation-container">
       <div ref="navigationElement" class="navigation-element">
         <div>
           <ul>
@@ -39,7 +20,7 @@
         </div>
       </div>
     </div>
-    <div ref="explanationElement" v-if="!isLoad" data-alignment="t"
+    <div ref="explanationElement" data-alignment="t"
          class="pr-tutorial-explain">
       <h2 class="font-semibold uppercase mb-2">{{ title }}</h2>
       <p v-html="message"></p>
@@ -48,50 +29,27 @@
 </template>
 
 <script>
-import Modal from "@/components/Modal";
 export default {
   name: "Tuto",
-  components: {Modal},
+  components: {},
   props: {
     tutoOpen: {
       type: Boolean
     },
-    load: {
-      type: Boolean
+    helpList: {
+      type: Array
     }
   },
   data() {
     return {
       isOpen: this.tutoOpen,
-      isLoad: this.load,
-      steps: [
-        {
-          id: 0,
-          text: ''
-        },
-        {
-          id: 1,
-          text: ''
-        },
-        {
-          id: 2,
-          text: ''
-        },
-        {
-          id: 3,
-          text: ''
-        },
-        {
-          id: 4,
-          text: ''
-        }
-      ],
       canvas: null,
       context: null,
       windowWidth: window.outerWidth,
       windowHeight: window.outerHeight,
       currentStep: 0,
       pastStep: [],
+      steps: [],
       title: '',
       message: ''
     }
@@ -101,48 +59,39 @@ export default {
   },
   mounted() {
     this.init();
-    if (this.tutoOpen && !this.isLoad) {
+    if (this.tutoOpen) {
       setTimeout(() => {
         this.placeExplanation(this.$refs.navigationElement, 't');
-      }, 10)
+      }, 200)
     }
   },
   destroyed() {
     window.removeEventListener("resize", this.windowResize);
   },
   watch: {
-    load(newVal) {
-      this.isLoad = newVal;
+    helpList(helpList) {
+      this.title = helpList[0].titre;
+      this.message = helpList[0].text;
+
+      this.steps = helpList.filter(id => id !== 0);
     },
     tutoOpen(newVal) {
       this.isOpen = newVal;
-      if(!this.isLoad) {
-        setTimeout(() => {
-          this.placeExplanation(this.$refs.navigationElement, 't');
-        }, 10);
-      }
+      setTimeout(() => {
+        this.placeExplanation(this.$refs.navigationElement, 't');
+      }, 200);
     }
   },
   methods: {
     init() {
       this.pastStep = [];
       this.currentStep = 0;
-      this.title = 'Prenons nos quartier qu\'est ce ?';
-      this.message = 'Cliquez sur <b>Suivant</b> pour faire un rapide tour.';
       this.context = this.$refs.tutorialCanvas.getContext('2d');
       this.fillCanvas();
     },
-    startTuto() {
-      this.isLoad = false;
-      setTimeout(() => {
-        this.placeExplanation(this.$refs.navigationElement, 't');
-      }, 10);
-    },
     closeTuto() {
       this.isOpen = false;
-      this.isLoad = false;
       this.$emit('update:tutoOpen', this.isOpen);
-      this.$emit('update:load', this.isLoad);
       this.init();
     },
     windowResize() {
@@ -175,44 +124,36 @@ export default {
       let align = 't';
 
       // Style init
-      this.context.strokeStyle = 'rgb(79, 209, 197)';
+      this.context.strokeStyle = 'rgb(59, 146, 173)';
       this.fillCanvas();
+      this.title = this.steps[step].titre;
+      this.message = this.steps[step].text;
 
       switch (step) {
         case 0:
-          this.title = 'Prenons nos quartier qu\'est ce ?';
-          this.message = 'Cliquez sur <b>Suivant</b> pour faire un rapide tour.';
           align = 't';
           elementToPlaceExplanation = this.$refs.navigationElement;
           this.pastStep = [];
           break;
         case 1:
-          this.title = 'La timeline';
-          this.message = '<b>La timeline</b> est la ligne temporelle sur laquelle sont basées les différentes constructions.';
           align = 'b';
           elementToPlaceExplanation = designsLinkContainer;
           this.pastStep = [0];
           this.createHighlightedZone(designsLinkContainerPosition, designsLinkContainer);
           break;
         case 2:
-          this.title = 'Les cases bâtiments';
-          this.message = 'C\'est ici que vous allez devoir déposer les images de bâtiments que vous pensez correspondre à la bonne époque.';
           align = 'b';
           elementToPlaceExplanation = deviceLinkContainer;
           this.pastStep = [0, 1];
           this.createHighlightedZone(deviceLinkContainerPosition, deviceLinkContainer);
           break;
         case 3:
-          this.title = 'La barre d\'outils';
-          this.message = 'Ici vous trouverez le bouton pour passer en plein écran. <br />Le bouton d\'aide si vous voulez revoir ce tutoriel. <br />Les différentes images que vous allez avoir à placer en dessous de la frise.';
           align = 'r';
           elementToPlaceExplanation = orientationLinkContainer;
           this.pastStep = [0, 1, 2];
           this.createHighlightedZone(orientationLinkContainerPosition, orientationLinkContainer);
           break;
         case 4:
-          this.title = 'La liste des bâtiments';
-          this.message = 'C\'est ici que vous allez retrouver tous les bâtiments (maison et immeuble) à placer sur la frise. <br /> pour les placer, il vous suffit de cliquer sur l\'image et de la glisser vers l\'endroit voulu.';
           align = 'r';
           elementToPlaceExplanation = viewerContainer;
           this.pastStep = [0, 1, 2, 3];

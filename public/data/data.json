@@ -130,6 +130,30 @@
     }
   ],
   "globalHelp": [
-
+    {
+      "id": 0,
+      "titre": "Bienvenue sur le jeu Prenons nos quartiers",
+      "text": "<p>Dans ce jeu, tu vas devoir trouver et placer des bâtiments sur une frise chronologique en fonction de leur époque.</p><p>ce tutoriel est là pour te guider dans le jeu. Si tu as déjà joué tu peux le passer et commencer tout de suite.</p>"
+    },
+    {
+      "id": 1,
+      "titre": "La timeline",
+      "text": "<b>La timeline</b> est la ligne temporelle sur laquelle sont basées les différentes constructions."
+    },
+    {
+      "id": 2,
+      "titre": "Les cases bâtiments",
+      "text": "C'est ici que vous allez devoir déposer les images de bâtiments que vous pensez correspondre à la bonne époque."
+    },
+    {
+      "id": 3,
+      "titre": "La barre d'outils",
+      "text": "Ici vous trouverez le bouton pour passer en plein écran. <br />Le bouton d'aide si vous voulez revoir ce tutoriel. <br />Les différentes images que vous allez avoir à placer en dessous de la frise."
+    },
+    {
+      "id": 4,
+      "titre": "La liste des bâtiments",
+      "text": "C'est ici que vous allez retrouver tous les bâtiments (maison et immeuble) à placer sur la frise. <br /> pour les placer, il vous suffit de cliquer sur l'image et de la glisser vers l'endroit voulu."
+    }
   ]
 }
