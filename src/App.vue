@@ -6,7 +6,8 @@
       <div class="timeline" id="timeline">
         <img src="@/assets/frise.png" alt="frise temporelle">
         <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-          <path fill="currentColor" d="M444.52 3.52L28.74 195.42c-47.97 22.39-31.98 92.75 19.19 92.75h175.91v175.91c0 51.17 70.36 67.17 92.75 19.19l191.9-415.78c15.99-38.39-25.59-79.97-63.97-63.97z"></path>
+          <path fill="currentColor"
+                d="M444.52 3.52L28.74 195.42c-47.97 22.39-31.98 92.75 19.19 92.75h175.91v175.91c0 51.17 70.36 67.17 92.75 19.19l191.9-415.78c15.99-38.39-25.59-79.97-63.97-63.97z"></path>
         </svg>
       </div>
       <div class="house-container" id="house-container">
@@ -111,7 +112,6 @@ export default {
   mounted() {
     const baseUrl = process.env.BASE_URL;
 
-    // we fetch datas from the json file
     fetch(`${baseUrl}data/data.json`, {mode: 'cors'})
         .then(resp => resp.json())
         .then((data) => {
@@ -338,6 +338,7 @@ $caseWidth: $caseHeight * .7;
 
 .timeline {
   position: relative;
+
   &::after {
     position: absolute;
     content: "";
@@ -347,6 +348,7 @@ $caseWidth: $caseHeight * .7;
     bottom: 0;
     left: 0;
   }
+
   .arrow {
     color: #151616;
     position: fixed;
