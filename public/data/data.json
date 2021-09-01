@@ -132,8 +132,8 @@
   "globalHelp": [
     {
       "id": 0,
-      "titre": "Bienvenue sur le jeu Prenons nos quartiers",
-      "text": "<p>Dans ce jeu, tu vas devoir trouver et placer des bâtiments sur une frise chronologique en fonction de leur époque.</p><p>ce tutoriel est là pour te guider dans le jeu. Si tu as déjà joué tu peux le passer et commencer tout de suite.</p>"
+      "titre": "Bienvenue !",
+      "text": "<p>Ce jeu consiste à chercher la place de chaque bâtiment afin de reconstituer correctement une frise sur l’histoire de nos habitats.</p>"
     },
     {
       "id": 1,
