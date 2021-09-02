@@ -138,22 +138,22 @@
     {
       "id": 1,
       "titre": "La ligne du temps",
-      "text": "La ligne du temps Pour nous repérer temporellement, chaque époque est représentée par des inventions ou des évènements qui ont changé notre quotidien. En passant la souris des indices apparaitront pour nous guider."
+      "text": "Pour nous repérer temporellement, chaque époque est représentée par des inventions ou des évènements qui ont changé notre quotidien. En passant la souris des indices apparaitront pour nous guider."
     },
     {
       "id": 2,
       "titre": "Les cases bâtiments",
-      "text": "C'est ici que vous allez devoir déposer les images de bâtiments que vous pensez correspondre à la bonne époque."
+      "text": "C’est ici que nous allons déposer les images de chaque bâtiment en fonction de son époque."
     },
     {
       "id": 3,
       "titre": "La barre d'outils",
-      "text": "Ici vous trouverez le bouton pour passer en plein écran. <br />Le bouton d'aide si vous voulez revoir ce tutoriel. <br />Les différentes images que vous allez avoir à placer en dessous de la frise."
+      "text": "C’est ici que se trouvent le bouton pour passer en plein écran, le bouton d’aide pour revoir le tutoriel et les différentes images à placer sur la frise."
     },
     {
       "id": 4,
-      "titre": "La liste des bâtiments",
-      "text": "C'est ici que vous allez retrouver tous les bâtiments (maison et immeuble) à placer sur la frise. <br /> pour les placer, il vous suffit de cliquer sur l'image et de la glisser vers l'endroit voulu."
+      "titre": "Les images de bâtiments",
+      "text": "Nous trouverons ici toutes les images d’habitats individuels et d’habitats collectifs. Pour les placer sur la frise, il suffit de cliquer sur l’image et de la glisser à l’endroit voulu. Un doute ? Des indices apparaitront sur le point d’interrogation."
     }
   ]
 }
