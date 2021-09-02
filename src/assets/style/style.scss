@@ -24,3 +24,7 @@ h1 {
 h2 {
   font-size: clamp(.65rem, unquote('-0.875rem + 8.333vh'), 1.2rem);
 }
+.modal-container.info {
+    color: #000000;
+    background-color: #f9e4b1;
+}
