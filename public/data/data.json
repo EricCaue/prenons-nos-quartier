@@ -25,73 +25,73 @@
     {
       "id": "img-0",
       "dragTo": "house-0",
-      "name": "001.png",
+      "name": "A_img_001.png",
       "help": "Ceci est une aide"
     },
     {
       "id": "img-1",
       "dragTo": "house-3",
-      "name": "002.jpg"
+      "name": "A_img_002.png"
     },
     {
       "id": "img-2",
       "dragTo": "house-4",
-      "name": "001.png"
+      "name": "A_img_003.png"
     },
     {
       "id": "img-4",
       "dragTo": "house-2",
-      "name": "001.png"
+      "name": "A_img_005.png"
     },
     {
       "id": "img-5",
       "dragTo": "house-5",
-      "name": "001.png"
+      "name": "A_img_006.png"
     },
     {
       "id": "img-6",
       "dragTo": "house-6",
-      "name": "001.png"
+      "name": "A_img_007.png"
     },
     {
       "id": "img-7",
       "dragTo": "house-7",
-      "name": "001.png"
+      "name": "A_img_008.png"
     },
     {
       "id": "img-8",
       "dragTo": "house-8",
-      "name": "001.png"
+      "name": "A_img_009.png"
     },
     {
       "id": "img-9",
-      "dragTo": "house-9",
-      "name": "001.png"
+      "dragTo": "building-0",
+      "name": "B_img_001.png"
     },
     {
       "id": "img-10",
-      "dragTo": "house-10",
-      "name": "001.png"
+      "dragTo": "building-1",
+      "name": "B_img_002.png"
     },
     {
       "id": "img-11",
-      "dragTo": "house-11",
-      "name": "001.png"
+      "dragTo": "building-2",
+      "name": "B_img_003.png"
     },
     {
       "id": "img-12",
-      "dragTo": "house-12",
-      "name": "001.png"
+      "dragTo": "building-3",
+      "name": "B_img_004.png"
     },
     {
       "id": "img-13",
-      "dragTo": "house-13",
-      "name": "001.png"
+      "dragTo": "building-4",
+      "name": "B_img_005.png"
     },
     {
       "id": "img-14",
-      "dragTo": "house-14",
-      "name": "001.png"
+      "dragTo": "building-5",
+      "name": "B_img_006.png"
     },
     {
       "id": "img-15",
