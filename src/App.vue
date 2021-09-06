@@ -4,7 +4,7 @@
     <h1>Le jeu du temps</h1>
     <div class="content-container">
       <div class="timeline" id="timeline">
-        <img src="@/assets/frise.png" alt="frise temporelle">
+        <frise/>
         <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <path fill="currentColor"
                 d="M444.52 3.52L28.74 195.42c-47.97 22.39-31.98 92.75 19.19 92.75h175.91v175.91c0 51.17 70.36 67.17 92.75 19.19l191.9-415.78c15.99-38.39-25.59-79.97-63.97-63.97z"></path>
@@ -70,7 +70,7 @@
                   d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm101.8-262.2L295.6 256l62.2 62.2c4.7 4.7 4.7 12.3 0 17l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L256 295.6l-62.2 62.2c-4.7 4.7-12.3 4.7-17 0l-22.6-22.6c-4.7-4.7-4.7-12.3 0-17l62.2-62.2-62.2-62.2c-4.7-4.7-4.7-12.3 0-17l22.6-22.6c4.7-4.7 12.3-4.7 17 0l62.2 62.2 62.2-62.2c4.7-4.7 12.3-4.7 17 0l22.6 22.6c4.7 4.7 4.7 12.3 0 17z"></path>
           </svg>
         </p>
-        <p v-if="modalHtml" v-html="modalHtml"></p>
+        <div class="modal-content" v-if="modalHtml" v-html="modalHtml"></div>
       </template>
     </modal>
   </div>
@@ -81,6 +81,7 @@ import Box from "@/components/Box";
 import ImageTank from "@/components/ImageTank";
 import Modal from "@/components/Modal";
 import Tuto from "@/components/Tuto";
+import Frise from "./components/Frise";
 
 let edgeSize = 200;
 let timer = null;
@@ -88,6 +89,7 @@ let timer = null;
 export default {
   name: 'App',
   components: {
+    Frise,
     Box,
     ImageTank,
     Modal,
@@ -115,7 +117,7 @@ export default {
     fetch(`${baseUrl}data/data.json`, {mode: 'cors'})
         .then(resp => resp.json())
         .then((data) => {
-          this.imgList = data.imgList;
+          this.imgList = this.shuffle(data.imgList);
           this.houseList = data.cards.houseList;
           this.buildingList = data.cards.buildingList;
           this.helpList = data.globalHelp;
@@ -141,10 +143,13 @@ export default {
       this.modalState = 'error';
     });
 
-    this.$on('open:modal', (name) => {
+    this.$on('open:modal', (id) => {
+      const building = this.imgList.find((img) => img.id === id);
+      const help = building.help ?? 'Aide sur la maison';
+      const name = building.name;
       this.showModal = true;
       this.modalContent = null;
-      this.modalHtml = '<p><img src="' + this.publicPath + 'images/' + name + '" alt=""></p><p>Aide sur la maison</p>';
+      this.modalHtml = `<img src="${this.publicPath}images/${name}" alt="" /><div>${help}</div>`;
       this.modalState = 'info';
     })
 
@@ -303,6 +308,23 @@ export default {
         }
 
       }
+    },
+    shuffle(array) {
+      let currentIndex = array.length, randomIndex;
+
+      // While there remain elements to shuffle...
+      while (currentIndex !== 0) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+          array[randomIndex], array[currentIndex]];
+      }
+
+      return array;
     }
   }
 }
