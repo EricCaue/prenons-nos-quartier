@@ -4,7 +4,8 @@
     <h1>Le jeu du temps</h1>
     <div class="content-container">
       <div class="timeline" id="timeline">
-        <frise/>
+<!--        <frise/>-->
+        <img src="@/assets/frise.png" alt="frise temporelle">
         <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <path fill="currentColor"
                 d="M444.52 3.52L28.74 195.42c-47.97 22.39-31.98 92.75 19.19 92.75h175.91v175.91c0 51.17 70.36 67.17 92.75 19.19l191.9-415.78c15.99-38.39-25.59-79.97-63.97-63.97z"></path>
@@ -81,7 +82,7 @@ import Box from "@/components/Box";
 import ImageTank from "@/components/ImageTank";
 import Modal from "@/components/Modal";
 import Tuto from "@/components/Tuto";
-import Frise from "./components/Frise";
+// import Frise from "./components/Frise";
 
 let edgeSize = 200;
 let timer = null;
@@ -89,7 +90,7 @@ let timer = null;
 export default {
   name: 'App',
   components: {
-    Frise,
+    // Frise,
     Box,
     ImageTank,
     Modal,
@@ -333,6 +334,7 @@ export default {
 <style lang="scss">
 @import './assets/style/variables';
 
+$friseHeight: 27.4vh;
 $caseHeight: 23vh;
 $caseWidth: $caseHeight * .7;
 #app {
@@ -353,7 +355,7 @@ $caseWidth: $caseHeight * .7;
 
 .content-container {
   display: grid;
-  grid-template-rows: repeat(3, $caseHeight);
+  grid-template-rows: $friseHeight repeat(2, $caseHeight);
   grid-template-columns: 1fr;
   grid-gap: 2vh;
 }
@@ -374,7 +376,7 @@ $caseWidth: $caseHeight * .7;
   .arrow {
     color: #151616;
     position: fixed;
-    top: calc(40px + 2rem + 23vh);
+    top: calc(38px + 27.4vh);
     right: 5px;
     width: 40px;
     height: 40px;
@@ -422,8 +424,14 @@ $caseWidth: $caseHeight * .7;
 }
 
 .timeline {
+  margin-bottom: 2rem;
   img {
-    height: 20vh;
+    height: 23.82vh;
+    width: auto;
+    float: left;
+  }
+  svg {
+    height: 23.82vh;
     width: auto;
     float: left;
   }
