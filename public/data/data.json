@@ -25,74 +25,78 @@
     {
       "id": "img-0",
       "dragTo": "house-0",
-      "name": "001.png",
+      "name": "A_img_001.png",
       "help": "<div class=\"titreImage\">Si je me penche sur la rue c’est pour gagner de la place dans les étages ! </div><p>Mon squelette est en bois et les espaces vides sont ensuite remplis en torchis (argile et paille) ou en briques. Seul, le rez de chaussée est en maçonnerie pour protéger le bois de l’humidité.</p><p>Mes fenêtres sont petites, elle étaient en papier huilé parce que le verre coûtait trop cher.<p>"
     },
     {
       "id": "img-1",
-      "dragTo": "house-3",
-      "name": "002.jpg",
-      "help": "test"
+      "dragTo": "house-1",
+      "name": "A_img_002.png"
     },
     {
       "id": "img-2",
-      "dragTo": "house-4",
-      "name": "001.png"
+      "dragTo": "house-2",
+      "name": "A_img_003.png"
+    },
+    {
+      "id": "img-3",
+      "dragTo": "house-3",
+      "name": "A_img_004.png"
     },
     {
       "id": "img-4",
-      "dragTo": "house-2",
-      "name": "001.png"
+      "dragTo": "house-4",
+      "name": "A_img_005.png"
     },
     {
       "id": "img-5",
       "dragTo": "house-5",
-      "name": "001.png"
+      "name": "A_img_006.png"
     },
     {
       "id": "img-6",
       "dragTo": "house-6",
-      "name": "001.png"
+      "name": "A_img_007.png"
     },
     {
       "id": "img-7",
       "dragTo": "house-7",
-      "name": "001.png"
+      "name": "A_img_008.png"
     },
-    {
+        {
       "id": "img-8",
       "dragTo": "house-8",
-      "name": "001.png"
+      "name": "A_img_009.png"
     },
     {
       "id": "img-9",
-      "dragTo": "house-9",
-      "name": "001.png"
+      "dragTo": "building-0",
+      "name": "B_img_001.png"
     },
     {
       "id": "img-10",
-      "dragTo": "house-10",
-      "name": "001.png"
+      "dragTo": "building-1",
+      "name": "B_img_002.png"
     },
     {
       "id": "img-11",
-      "dragTo": "house-11",
-      "name": "001.png"
+      "dragTo": "building-2",
+      "name": "B_img_003.png"
     },
     {
       "id": "img-12",
-      "dragTo": "house-12",
-      "name": "001.png"
+      "dragTo": "building-3",
+      "name": "B_img_004.png"
     },
     {
       "id": "img-13",
-      "dragTo": "house-13",
-      "name": "001.png"
+      "dragTo": "building-4",
+      "name": "B_img_005.png"
     },
     {
       "id": "img-14",
-      "dragTo": "house-14",
-      "name": "001.png"
+      "dragTo": "building-5",
+      "name": "B_img_006.png"
     },
     {
       "id": "img-15",
@@ -133,28 +137,28 @@
   "globalHelp": [
     {
       "id": 0,
-      "titre": "Bienvenue sur le jeu Prenons nos quartiers",
-      "text": "<p>Dans ce jeu, tu vas devoir trouver et placer des bâtiments sur une frise chronologique en fonction de leur époque.</p><p>ce tutoriel est là pour te guider dans le jeu. Si tu as déjà joué tu peux le passer et commencer tout de suite.</p>"
+      "titre": "Bienvenue !",
+      "text": "<p>Ce jeu consiste à chercher la place de chaque bâtiment afin de reconstituer correctement une frise sur l’histoire de nos habitats.</p>"
     },
     {
       "id": 1,
-      "titre": "La timeline",
-      "text": "<b>La timeline</b> est la ligne temporelle sur laquelle sont basées les différentes constructions."
+      "titre": "La ligne du temps",
+      "text": "Pour nous repérer temporellement, chaque époque est représentée par des inventions ou des évènements qui ont changé notre quotidien. En passant la souris des indices apparaitront pour nous guider."
     },
     {
       "id": 2,
       "titre": "Les cases bâtiments",
-      "text": "C'est ici que vous allez devoir déposer les images de bâtiments que vous pensez correspondre à la bonne époque."
+      "text": "C’est ici que nous allons déposer les images de chaque bâtiment en fonction de son époque."
     },
     {
       "id": 3,
       "titre": "La barre d'outils",
-      "text": "Ici vous trouverez le bouton pour passer en plein écran. <br />Le bouton d'aide si vous voulez revoir ce tutoriel. <br />Les différentes images que vous allez avoir à placer en dessous de la frise."
+      "text": "C’est ici que se trouvent le bouton pour passer en plein écran, le bouton d’aide pour revoir le tutoriel et les différentes images à placer sur la frise."
     },
     {
       "id": 4,
-      "titre": "La liste des bâtiments",
-      "text": "C'est ici que vous allez retrouver tous les bâtiments (maison et immeuble) à placer sur la frise. <br /> pour les placer, il vous suffit de cliquer sur l'image et de la glisser vers l'endroit voulu."
+      "titre": "Les images de bâtiments",
+      "text": "Nous trouverons ici toutes les images d’habitats individuels et d’habitats collectifs. Pour les placer sur la frise, il suffit de cliquer sur l’image et de la glisser à l’endroit voulu. Un doute ? Des indices apparaitront sur le point d’interrogation."
     }
   ]
 }
