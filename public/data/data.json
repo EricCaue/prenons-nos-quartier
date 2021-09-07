@@ -26,12 +26,13 @@
       "id": "img-0",
       "dragTo": "house-0",
       "name": "001.png",
-      "help": "Ceci est une aide"
+      "help": "<div class=\"titreImage\">Si je me penche sur la rue c’est pour gagner de la place dans les étages ! </div><p>Mon squelette est en bois et les espaces vides sont ensuite remplis en torchis (argile et paille) ou en briques. Seul, le rez de chaussée est en maçonnerie pour protéger le bois de l’humidité.</p><p>Mes fenêtres sont petites, elle étaient en papier huilé parce que le verre coûtait trop cher.<p>"
     },
     {
       "id": "img-1",
       "dragTo": "house-3",
-      "name": "002.jpg"
+      "name": "002.jpg",
+      "help": "test"
     },
     {
       "id": "img-2",

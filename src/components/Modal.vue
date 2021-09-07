@@ -132,6 +132,13 @@
             margin-left: 1em;
             width: 3em;
         }
+
+        .modal-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
     }
 
     .modal-footer {
