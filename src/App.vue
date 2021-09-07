@@ -70,7 +70,7 @@
                   d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm101.8-262.2L295.6 256l62.2 62.2c4.7 4.7 4.7 12.3 0 17l-22.6 22.6c-4.7 4.7-12.3 4.7-17 0L256 295.6l-62.2 62.2c-4.7 4.7-12.3 4.7-17 0l-22.6-22.6c-4.7-4.7-4.7-12.3 0-17l62.2-62.2-62.2-62.2c-4.7-4.7-4.7-12.3 0-17l22.6-22.6c4.7-4.7 12.3-4.7 17 0l62.2 62.2 62.2-62.2c4.7-4.7 12.3-4.7 17 0l22.6 22.6c4.7 4.7 4.7 12.3 0 17z"></path>
           </svg>
         </p>
-        <p v-if="modalHtml" v-html="modalHtml"></p>
+        <div v-if="modalHtml" v-html="modalHtml" class="modal-content"></div>
       </template>
     </modal>
   </div>
@@ -115,7 +115,7 @@ export default {
     fetch(`${baseUrl}data/data.json`, {mode: 'cors'})
         .then(resp => resp.json())
         .then((data) => {
-          this.imgList = data.imgList;
+          this.imgList = this.shuffle(data.imgList);
           this.houseList = data.cards.houseList;
           this.buildingList = data.cards.buildingList;
           this.helpList = data.globalHelp;
@@ -141,10 +141,13 @@ export default {
       this.modalState = 'error';
     });
 
-    this.$on('open:modal', (name) => {
+    this.$on('open:modal', (id) => {
+      const img = this.imgList.find((img) => img.id === id);
+      const help = img.help;
+      const name = img.name;
       this.showModal = true;
       this.modalContent = null;
-      this.modalHtml = '<p><img src="' + this.publicPath + 'images/' + name + '" alt=""></p><p>Aide sur la maison</p>';
+      this.modalHtml = `<p><img src="${this.publicPath}images/${name}" alt=""></p><div>${help}</div>`;
       this.modalState = 'info';
     })
 
@@ -303,6 +306,23 @@ export default {
         }
 
       }
+    },
+    shuffle(array) {
+      let currentIndex = array.length,  randomIndex;
+
+      // While there remain elements to shuffle...
+      while (currentIndex != 0) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+          array[randomIndex], array[currentIndex]];
+      }
+
+      return array;
     }
   }
 }
