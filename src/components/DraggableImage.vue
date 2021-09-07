@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     openHelpModal() {
-      this.$parent.$parent.$emit('open:modal', this.name);
+      this.$parent.$parent.$emit('open:modal', this.id);
     }
   }
 }
