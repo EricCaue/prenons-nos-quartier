@@ -31,6 +31,7 @@
       "id": "img-1",
       "dragTo": "house-1",
       "name": "A_img_002.png"
+      "help":"<div class=\"titreImage\">Avez-vous remarqué comme ma façade est bien dessinée ?</div><p>Mes fenêtres sont alignées d’un étage à l’autre jusqu’à ma lucarne sur le toit.</p><p>Les croisées en pierre au milieu des fenêtres permettent de faire entrer la lumière dans la maison.</p><p>Mais attention, les proportions ne sont pas dues au hasard... Elles sont calculées à partir du nombre d’or, vous connaissez ?</p>
     },
     {
       "id": "img-2",
