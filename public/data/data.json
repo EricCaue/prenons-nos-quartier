@@ -54,87 +54,104 @@
     {
       "id": "img-5",
       "dragTo": "house-5",
-      "name": "A_img_006.png"
+      "name": "A_img_006.png",
+      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
     },
     {
       "id": "img-6",
       "dragTo": "house-6",
-      "name": "A_img_007.png"
+      "name": "A_img_007.png",
+      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
     },
     {
       "id": "img-7",
       "dragTo": "house-7",
-      "name": "A_img_008.png"
+      "name": "A_img_008.png",
+      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
     },
         {
       "id": "img-8",
       "dragTo": "house-8",
-      "name": "A_img_009.png"
+      "name": "A_img_009.png",
+      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
     },
     {
       "id": "img-9",
       "dragTo": "building-0",
-      "name": "B_img_001.png"
+      "name": "B_img_001.png",
+      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
     },
     {
       "id": "img-10",
       "dragTo": "building-1",
-      "name": "B_img_002.png"
+      "name": "B_img_002.png",
+      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
     },
     {
       "id": "img-11",
       "dragTo": "building-2",
-      "name": "B_img_003.png"
+      "name": "B_img_003.png",
+      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
     },
     {
       "id": "img-12",
       "dragTo": "building-3",
-      "name": "B_img_004.png"
+      "name": "B_img_004.png",
+      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
     },
     {
       "id": "img-13",
       "dragTo": "building-4",
-      "name": "B_img_005.png"
+      "name": "B_img_005.png",
+      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
     },
     {
       "id": "img-14",
       "dragTo": "building-5",
-      "name": "B_img_006.png"
+      "name": "B_img_006.png",
+      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
     },
     {
       "id": "img-15",
       "dragTo": "house-15",
-      "name": "001.png"
+      "name": "001.png",
+      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
     },
     {
       "id": "img-16",
       "dragTo": "house-16",
-      "name": "001.png"
+      "name": "001.png",
+      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
     },
     {
       "id": "img-17",
       "dragTo": "house-17",
-      "name": "001.png"
+      "name": "001.png",
+      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
     },
     {
       "id": "img-18",
       "dragTo": "house-18",
-      "name": "001.png"
+      "name": "001.png",
+      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
     },
     {
       "id": "img-19",
       "dragTo": "house-19",
-      "name": "001.png"
+      "name": "001.png",
+      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
     },
     {
       "id": "img-20",
       "dragTo": "house-20",
-      "name": "001.png"
+      "name": "001.png",
+      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
     },
     {
       "id": "img-21",
       "dragTo": "house-21",
-      "name": "001.png"
+      "name": "001.png",
+      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
     }
   ],
   "globalHelp": [
