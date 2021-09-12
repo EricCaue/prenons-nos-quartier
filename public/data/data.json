@@ -79,80 +79,38 @@
       "id": "img-9",
       "dragTo": "building-0",
       "name": "B_img_001.png",
-      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
+      "help": "<div class=\"titreImage\">Le tracé des rues change dans la ville et je dois les suivre !</div><p>Je suis un immeuble courant dans les grandes villes françaises et souvent construit suivant les mêmes modèles (hauteur des façades en fonction de la largeur de la rue, balcons filants, etc.).<br/>Avez-vous deviné à quel étage sont les appartements les plus nobles ? Attention, il n’y a pas encore d’ascenseur...</p>"
     },
     {
       "id": "img-10",
       "dragTo": "building-1",
       "name": "B_img_002.png",
-      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
+      "help": "<div class=\"titreImage\">J’ai été  une image de la modernité et ai même servi de décor pour le cinéma ! Mais vous seriez surpris de voir le film, il n’y pas de son et pas de couleur...</div><p>Ma façade se creuse pour créer des terrasses plantées comme des jardins jusque sur mon toit.</p><p>Mes fenêtres ne font pas toutes la même taille mais elles s’assemblent parfaitement pour créer des bandes. Ce jeu entre les pleins et les vides était très nouveau à l’époque.</p>"
     },
     {
       "id": "img-11",
       "dragTo": "building-2",
       "name": "B_img_003.png",
-      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
+      "help": "<div class=\"titreImage\">Toujours un peu plus de confort dans les logements !</div><p>C’est une époque où le confort entre dans les logements. Ici, chaque appartement est équipé de l’électricité, de l’eau courante, du gaz et est raccordé au tout à l’égoût. Même si ces équipements existaient déjà, il sont désormais accessibles au plus grand nombre.</p>"
     },
     {
       "id": "img-12",
       "dragTo": "building-3",
       "name": "B_img_004.png",
-      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
+      "help": "<div class=\"titreImage\">S’élever pour loger rapidement tout le monde !</div><p>Je marque la période où l’on a inventé les tours et les barres de logements, heureusement qu’il y a des ascenseurs...</p>"
     },
     {
       "id": "img-13",
       "dragTo": "building-4",
       "name": "B_img_005.png",
-      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
+      "help": "<div class=\"titreImage\">On garde le confort des appartements mais on limite les étages.</div><p>Depuis un moment déjà, les matériaux utilisés pour la construction sont les mêmes partout. Beaucoup d’immeubles se ressemblent alors on fait parfois des essais de couleurs. Les voitures sont garées au pied de l’immeuble et ce n’est pas toujours facile de trouver de l’espace pour un peu de verdure.</p>"
     },
     {
       "id": "img-14",
       "dragTo": "building-5",
       "name": "B_img_006.png",
-      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
+      "help": "<div class=\"titreImage\">Limiter mon empreinte écologique, c’était le défi !</div><p>Je suis compact pour consommer moins de surface. Mes appartements traversent l’immeuble d’une façade à l’autre pour être ventilés naturellement et se prolongent par une terrasse extérieure protégée du soleil.</p>"
     },
-    {
-      "id": "img-15",
-      "dragTo": "house-15",
-      "name": "001.png",
-      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
-    },
-    {
-      "id": "img-16",
-      "dragTo": "house-16",
-      "name": "001.png",
-      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
-    },
-    {
-      "id": "img-17",
-      "dragTo": "house-17",
-      "name": "001.png",
-      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
-    },
-    {
-      "id": "img-18",
-      "dragTo": "house-18",
-      "name": "001.png",
-      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
-    },
-    {
-      "id": "img-19",
-      "dragTo": "house-19",
-      "name": "001.png",
-      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
-    },
-    {
-      "id": "img-20",
-      "dragTo": "house-20",
-      "name": "001.png",
-      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
-    },
-    {
-      "id": "img-21",
-      "dragTo": "house-21",
-      "name": "001.png",
-      "help": "<div class=\"titreImage\"></div><p></p><p></p>"
-    }
   ],
   "globalHelp": [
     {
