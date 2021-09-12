@@ -364,6 +364,7 @@ $caseWidth: $caseHeight * .7;
   width: 150px;
   padding: .6em;
   background-color: $primary;
+  z-index: 20;
 
   h3 {
     color: #ffffff;
