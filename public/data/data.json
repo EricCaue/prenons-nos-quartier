@@ -42,7 +42,8 @@
     {
       "id": "img-3",
       "dragTo": "house-3",
-      "name": "A_img_004.png"
+      "name": "A_img_004.png",
+      "help": "<div class=\"titreImage\">Les villes ont commencé à s’étendre et les rues se sont élargies pour laisser passer la lumière mais aussi pour laisser circuler l’air !</div><p>Je m’aligne sagement sur la rue, ma façade est sobre et symétrique. Les matériaux de construction sont trouvés dans les alentours (la pierre, le sable lorsque la façade est enduite, les tuiles pour ma couverture, etc.).</p><p>Les fenêtres deviennent de plus en plus petites en montant aux étages, mais avez-vous remarqué mes carreaux ?</p>"
     },
     {
       "id": "img-4",
