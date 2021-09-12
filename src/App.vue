@@ -3,14 +3,7 @@
     <Tuto :tuto-open.sync="tutoOpen" :help-list="helpList"></Tuto>
     <h1>Le jeu du temps</h1>
     <div class="content-container">
-      <div class="timeline" id="timeline">
-<!--        <frise/>-->
-        <img src="@/assets/frise.png" alt="frise temporelle">
-        <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-          <path fill="currentColor"
-                d="M444.52 3.52L28.74 195.42c-47.97 22.39-31.98 92.75 19.19 92.75h175.91v175.91c0 51.17 70.36 67.17 92.75 19.19l191.9-415.78c15.99-38.39-25.59-79.97-63.97-63.97z"></path>
-        </svg>
-      </div>
+      <timeline />
       <div class="house-container" id="house-container">
         <h2>Habitat individuel</h2>
         <div class="box-tank">
@@ -82,7 +75,7 @@ import Box from "@/components/Box";
 import ImageTank from "@/components/ImageTank";
 import Modal from "@/components/Modal";
 import Tuto from "@/components/Tuto";
-// import Frise from "./components/Frise";
+import Timeline from "./components/Timeline";
 
 let edgeSize = 200;
 let timer = null;
@@ -90,7 +83,7 @@ let timer = null;
 export default {
   name: 'App',
   components: {
-    // Frise,
+    Timeline,
     Box,
     ImageTank,
     Modal,
@@ -358,30 +351,6 @@ $caseWidth: $caseHeight * .7;
   grid-template-rows: $friseHeight repeat(2, $caseHeight);
   grid-template-columns: 1fr;
   grid-gap: 2vh;
-}
-
-.timeline {
-  position: relative;
-
-  &::after {
-    position: absolute;
-    content: "";
-    height: 5px;
-    width: 100%;
-    background: #151616;
-    bottom: 0;
-    left: 0;
-  }
-
-  .arrow {
-    color: #151616;
-    position: fixed;
-    top: calc(38px + 27.4vh);
-    right: 5px;
-    width: 40px;
-    height: 40px;
-    transform: rotateZ(45deg);
-  }
 }
 
 .tools-container {
