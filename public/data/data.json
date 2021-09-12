@@ -48,7 +48,8 @@
     {
       "id": "img-4",
       "dragTo": "house-4",
-      "name": "A_img_005.png"
+      "name": "A_img_005.png",
+      "help": "<div class=\"titreImage\">Attention, je ne fais peut-être pas mon âge...</div><p>J’ai été construite sur des concepts qui étaient à l’époque révolutionnaires : mes fenêtres en bandeau, mes pilotis qui me décolle du sol, mon toit utilisé en terrasse, etc.</p><p>Pas de pierres, pas de briques, celui qui m’a construit était alors amateur de béton armé !</p>"
     },
     {
       "id": "img-5",
