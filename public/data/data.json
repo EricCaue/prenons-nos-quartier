@@ -37,6 +37,7 @@
       "id": "img-2",
       "dragTo": "house-2",
       "name": "A_img_003.png"
+      "help": "<div class=\"titreImage\"></div>"
     },
     {
       "id": "img-3",
