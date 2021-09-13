@@ -32,50 +32,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$width: 150px;
-$height: 230px;
-.image {
-  z-index: 70;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  margin: auto;
-  justify-content: center;
-  align-items: center;
-  width: $width * .5;
-  height: $height * .5;
-  cursor: grabbing;
-  transition: all .25s ease;
-  justify-items: center;
-
-  img {
-    height: 100%;
-    width: auto;
-  }
-
-  .img-help {
-    z-index: 80;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 1.2rem;
-    height: 1.2rem;
-    bottom: .6rem;
-    right: .3rem;
-    background-color: white;
-    border-radius: 50%;
-    transition: transform .25s ease;
-
-    &:hover {
-      cursor: help;
-      transform: scale(1.2);
-    }
-  }
-
-  &:hover {
-    transform: scale(1.1);
-    border-color: #a1a1a1;
-  }
-}
+@import "../assets/style/draggableimage";
 </style>

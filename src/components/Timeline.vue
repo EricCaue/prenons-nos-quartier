@@ -52,34 +52,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.timeline {
-  position: relative;
-
-  .frise {
-    position: relative;
-    z-index: 10;
-  }
-
-  &::after {
-    position: absolute;
-    content: "";
-    height: 8px;
-    width: 100%;
-    background: #151616;
-    top: var(--timeline-position);
-    left: 0;
-    z-index: 5;
-  }
-
-  .arrow {
-    color: #151616;
-    position: fixed;
-    top: var(--arrow-position);
-    right: 5px;
-    width: 40px;
-    height: 40px;
-    transform: rotateZ(45deg);
-    z-index: 15;
-  }
-}
+@import "../assets/style/timeline";
 </style>

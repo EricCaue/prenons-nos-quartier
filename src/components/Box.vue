@@ -31,39 +31,5 @@
 </script>
 
 <style lang="scss" scoped>
-    .box {
-        overflow: hidden;
-        display: flex;
-        margin: auto;
-        width: 100%;
-        height: 100%;
-        border: 2px dashed #d2d2d2;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: all .25s ease;
-        align-items: center;
-
-        &.success {
-            transition: all .5s ease-in-out;
-            border: 2px solid #3b92ad;
-        }
-
-        &:not(.success):hover {
-            transform: scale(1.1);
-            border-color: #a1a1a1;
-        }
-
-        img {
-            width: 100%;
-            height: auto;
-        }
-    }
-
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity .5s, transform .25s ease-in-out;
-    }
-    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-        opacity: 0;
-       transform: scale(.7);
-    }
+  @import "../assets/style/box";
 </style>
