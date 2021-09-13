@@ -30,107 +30,86 @@
     {
       "id": "img-1",
       "dragTo": "house-1",
-      "name": "A_img_002.png"
+      "name": "A_img_002.png",
+      "help": "<div class=\"titreImage\">Avez-vous remarqué comme ma façade est bien dessinée ?</div><p>Mes fenêtres sont alignées d’un étage à l’autre jusqu’à ma lucarne sur le toit.</p><p>Les croisées en pierre au milieu des fenêtres permettent de faire entrer la lumière dans la maison.</p><p>Mais attention, les proportions ne sont pas dues au hasard... Elles sont calculées à partir du nombre d’or, vous connaissez ?</p>"
     },
     {
       "id": "img-2",
       "dragTo": "house-2",
-      "name": "A_img_003.png"
+      "name": "A_img_003.png",
+      "help": "<div class=\"titreImage\">A mon époque, on regroupe souvent plusieurs parcelles pour construire des maisons un peu plus larges. Toujours plus d’espace et de lumière ! </div><p>Mes fenêtres sont très grandes et mes volets ne sont plus seulement à l’intérieur.  Ici, ils sont battants en façade.<br/>Avec un peu d’attention, on remarque la ferronnerie de mes garde corps à l’étage, c’est aussi une nouveauté.</p><p>On ne le voit pas sur la photo mais mon entrée se fait par un porche qui donne sur une cour pavée. Deux grosses pierres sont posées de chaque côté de ma porte cochère, saurais-tu à quoi elles servaient ? </p>"
     },
     {
       "id": "img-3",
       "dragTo": "house-3",
-      "name": "A_img_004.png"
+      "name": "A_img_004.png",
+      "help": "<div class=\"titreImage\">Les villes ont commencé à s’étendre et les rues se sont élargies pour laisser passer la lumière mais aussi pour laisser circuler l’air !</div><p>Je m’aligne sagement sur la rue, ma façade est sobre et symétrique. Les matériaux de construction sont trouvés dans les alentours (la pierre, le sable lorsque la façade est enduite, les tuiles pour ma couverture, etc.).</p><p>Les fenêtres deviennent de plus en plus petites en montant aux étages, mais avez-vous remarqué mes carreaux ?</p>"
     },
     {
       "id": "img-4",
       "dragTo": "house-4",
-      "name": "A_img_005.png"
+      "name": "A_img_005.png",
+      "help": "<div class=\"titreImage\">Attention, je ne fais peut-être pas mon âge...</div><p>J’ai été construite sur des concepts qui étaient à l’époque révolutionnaires : mes fenêtres en bandeau, mes pilotis qui me décolle du sol, mon toit utilisé en terrasse, etc.</p><p>Pas de pierres, pas de briques, celui qui m’a construit était alors amateur de béton armé !</p>"
     },
     {
       "id": "img-5",
       "dragTo": "house-5",
-      "name": "A_img_006.png"
+      "name": "A_img_006.png",
+      "help": "<div class=\"titreImage\">Si vous pensez être sur la côte c’est que l’effet est réussi !</div><p>Tous mes matériaux sont choisis et assemblés avec soin : la pierre, la brique, le bois, le zinc, la tuile et l’ardoise.</p><p>Je suis implantée en recul de la rue pour créer un petit jardin d’agrément souvent coloré. D’ailleurs, puisqu’il faut peindre le bois pour le protéger autant y mettre de la couleur !</p>"
     },
     {
       "id": "img-6",
       "dragTo": "house-6",
-      "name": "A_img_007.png"
+      "name": "A_img_007.png",
+      "help": "<div class=\"titreImage\">Implantée au milieu de ma parcelle, je cède mon rez-de-chaussée à la voiture !</div><p>La vie de la maison se retrouve alors à l’étage, coupée du jardin.</p><p>Les matériaux de construction ne sont pas toujours liés à la région, à part peut-être la tuile.</p>"
     },
     {
       "id": "img-7",
       "dragTo": "house-7",
-      "name": "A_img_008.png"
+      "name": "A_img_008.png",
+      "help": "<div class=\"titreImage\">Tout au même niveau, chez moi on passe du garage au salon en un clin d’oeil !</div><p>L’escalier disparaît et je m’étale sur la parcelle. Tu peux me croiser dans beaucoup de régions parce que je n’utilise que des éléments fabriqués en série : parpaings, fenêtres, portes, charpente, etc.</p>"
     },
         {
       "id": "img-8",
       "dragTo": "house-8",
-      "name": "A_img_009.png"
+      "name": "A_img_009.png",
+      "help": "<div class=\"titreImage\">Au départ, mes concepteurs se sont fixé un objectif : limiter la consommation d’énergie pour ma construction mais aussi après pour me chauffer ou me refroidir.</div><p>Tous les matériaux sont écologiques et ont fait appel à des savoir-faire locaux.</p>"
     },
     {
       "id": "img-9",
       "dragTo": "building-0",
-      "name": "B_img_001.png"
+      "name": "B_img_001.png",
+      "help": "<div class=\"titreImage\">Le tracé des rues change dans la ville et je dois les suivre !</div><p>Je suis un immeuble courant dans les grandes villes françaises et souvent construit suivant les mêmes modèles (hauteur des façades en fonction de la largeur de la rue, balcons filants, etc.).<br/>Avez-vous deviné à quel étage sont les appartements les plus nobles ? Attention, il n’y a pas encore d’ascenseur...</p>"
     },
     {
       "id": "img-10",
       "dragTo": "building-1",
-      "name": "B_img_002.png"
+      "name": "B_img_002.png",
+      "help": "<div class=\"titreImage\">J’ai été  une image de la modernité et ai même servi de décor pour le cinéma ! Mais vous seriez surpris de voir le film, il n’y pas de son et pas de couleur...</div><p>Ma façade se creuse pour créer des terrasses plantées comme des jardins jusque sur mon toit.</p><p>Mes fenêtres ne font pas toutes la même taille mais elles s’assemblent parfaitement pour créer des bandes. Ce jeu entre les pleins et les vides était très nouveau à l’époque.</p>"
     },
     {
       "id": "img-11",
       "dragTo": "building-2",
-      "name": "B_img_003.png"
+      "name": "B_img_003.png",
+      "help": "<div class=\"titreImage\">Toujours un peu plus de confort dans les logements !</div><p>C’est une époque où le confort entre dans les logements. Ici, chaque appartement est équipé de l’électricité, de l’eau courante, du gaz et est raccordé au tout à l’égoût. Même si ces équipements existaient déjà, il sont désormais accessibles au plus grand nombre.</p>"
     },
     {
       "id": "img-12",
       "dragTo": "building-3",
-      "name": "B_img_004.png"
+      "name": "B_img_004.png",
+      "help": "<div class=\"titreImage\">S’élever pour loger rapidement tout le monde !</div><p>Je marque la période où l’on a inventé les tours et les barres de logements, heureusement qu’il y a des ascenseurs...</p>"
     },
     {
       "id": "img-13",
       "dragTo": "building-4",
-      "name": "B_img_005.png"
+      "name": "B_img_005.png",
+      "help": "<div class=\"titreImage\">On garde le confort des appartements mais on limite les étages.</div><p>Depuis un moment déjà, les matériaux utilisés pour la construction sont les mêmes partout. Beaucoup d’immeubles se ressemblent alors on fait parfois des essais de couleurs. Les voitures sont garées au pied de l’immeuble et ce n’est pas toujours facile de trouver de l’espace pour un peu de verdure.</p>"
     },
     {
       "id": "img-14",
       "dragTo": "building-5",
-      "name": "B_img_006.png"
-    },
-    {
-      "id": "img-15",
-      "dragTo": "house-15",
-      "name": "001.png"
-    },
-    {
-      "id": "img-16",
-      "dragTo": "house-16",
-      "name": "001.png"
-    },
-    {
-      "id": "img-17",
-      "dragTo": "house-17",
-      "name": "001.png"
-    },
-    {
-      "id": "img-18",
-      "dragTo": "house-18",
-      "name": "001.png"
-    },
-    {
-      "id": "img-19",
-      "dragTo": "house-19",
-      "name": "001.png"
-    },
-    {
-      "id": "img-20",
-      "dragTo": "house-20",
-      "name": "001.png"
-    },
-    {
-      "id": "img-21",
-      "dragTo": "house-21",
-      "name": "001.png"
+      "name": "B_img_006.png",
+      "help": "<div class=\"titreImage\">Limiter mon empreinte écologique, c’était le défi !</div><p>Je suis compact pour consommer moins de surface. Mes appartements traversent l’immeuble d’une façade à l’autre pour être ventilés naturellement et se prolongent par une terrasse extérieure protégée du soleil.</p>"
     }
   ],
   "globalHelp": [
