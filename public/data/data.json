@@ -138,5 +138,122 @@
       "titre": "Les images de bâtiments",
       "text": "Nous trouverons ici toutes les images d’habitats individuels et d’habitats collectifs. Pour les placer sur la frise, il suffit de cliquer sur l’image et de la glisser à l’endroit voulu. Un doute ? Des indices apparaitront sur le point d’interrogation."
     }
+  ],
+  "friseHelp": [
+    {
+      "id": "indice001",
+      "date": "1492",
+      "content": "Christophe Colomb traverse l’océan Atlantique à bord de la Santa Maria et découvre un nouveau continent !"
+    },
+    {
+      "id": "indice002",
+      "date": "1451",
+      "content": "Le premier livre européen est imprimé grâce à l’invention de Gutemberg."
+    },
+    {
+      "id": "indice003",
+      "date": "1490",
+      "content": "Léonard de Vinci s’intéresse au travail d’un architecte romain appelé Vitruve. Il s’en inspire pour dessiner l’Homme de Vitruve dont le corps aux proportions parfaites va devenir un des symboles de la Renaissance. "
+    },
+    {
+      "id": "indice004",
+      "date": "1638 - 1715",
+      "content": "Louis XIV, appelé aussi le Roi Soleil, fait construire le château de Versailles entre 1661 et 1710, un chantier de 49 ans !"
+    },
+    {
+      "id": "indice005",
+      "date": "1789",
+      "content": "Le peuple français se révolte contre la monarchie absolue et le 14 juillet , les revolutionnaires entrent dans la Bastille."
+    },
+    {
+      "id": "indice006",
+      "date": "1827",
+      "content": "Nicéphore Niépce invente la photographie. Son premier cliché est une vue depuis la fenêtre de sa maison en Bourgogne. / Photo : lumière/ Graphie : dessiner /Dessiner la lumière, encore une belle invention !"
+    },
+    {
+      "id": "indice007",
+      "date": "1884",
+      "content": "Les débuts de la bicyclette commencent en 1817 (invention de la draisienne) mais ce n’est qu’en 1884 que l’anglais John Kemp Starley lui donne l’allure que nous lui connaissons aujourd’hui (roues de taille raisonnable et entrainement par une chaîne)."
+    },
+    {
+      "id": "indice008",
+      "date": "1870",
+      "content": "L’inventeur italo-américain, Antonio Meucci dépose le brevet du Telettrofono qui deviendra ensuite... le téléphone! Au début, le signal est transporté sur des lignes téléphoniques et passent par des centres qui redirigent manuellement les informations vers la bonne personne."
+    },
+    {
+      "id": "indice009",
+      "date": "1838",
+      "content": "Le premier bateau à vapeur est construit pour des liaisons régulières transatlantiques."
+    },
+    {
+      "id": "indice010",
+      "date": "1879",
+      "content": "Thomas Edison commercialise une ampoule électrique à incandescence (un filament métallique chauffe et émet de la lumière). Elle remplacera les bougies, les lampes à pétrole."
+    },
+    {
+      "id": "indice011",
+      "date": "1906",
+      "content": "Henry Ford lance la première fabrication en série d’une automobile (le modèle T). A l’époque, il s’amuse à dire que le client peut demander n’importe quelle couleur pourvu qu’elle soit noire… "
+    },
+    {
+      "id": "indice012",
+      "date": "1914 - 1918",
+      "content": "Première guerre mondiale"
+    },
+    {
+      "id": "indice013",
+      "date": "1915",
+      "content": "Invention de l’eau chaude!...produite par le premier chauffe-eau électrique à accumulation de Frederic Sauter."
+    },
+    {
+      "id": "indice014",
+      "date": "1936",
+      "content": "Après la victoire électorale du Front Populaire, les salariés français peuvent prendre leurs premiers congés payés (à l’époque deux semaines par an)."
+    },
+    {
+      "id": "indice015",
+      "date": "1923",
+      "content": "Production du premier refrigérateur domestique."
+    },
+    {
+      "id": "indice016",
+      "date": "1939 - 1945",
+      "content": "Deuxième guerre mondiale"
+    },
+    {
+      "id": "indice017",
+      "date": "1953",
+      "content": "Généralisation de la préfabrication pour la construction dans le contexte de la reconstruction."
+    },
+    {
+      "id": "indice018",
+      "date": "1957",
+      "content": "Spoutnik, le premier satellite est envoyé dans l’espace par l’URSS."
+    },
+    {
+      "id": "indice019",
+      "date": "1967",
+      "content": "Premières emissions  en couleur à la télévision française (création de la Radio Télévision Française RTF en 1949)."
+    },
+    {
+      "id": "indice020",
+      "date": "1969",
+      "content": "Neil Armstrong pose le pied sur la lune."
+    },
+    {
+      "id": "indice021",
+      "date": "fin des années 70",
+      "content": "Les premiers ordinateurs personnels sont vendus au grand-public."
+    },
+    {
+      "id": "indice022",
+      "date": "1981",
+      "content": "Mise en service du TGV (Train à Grande Vitesse)."
+    },
+    {
+      "id": "indice023",
+      "date": "2000",
+      "content": "Le premier téléphone permettant un accès internet rencontre un vif succès avec 10 millions d’utilisateurs."
+    }
   ]
 }

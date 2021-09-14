@@ -2,7 +2,7 @@
   <div id="app" :class="{'tuto-open': tutoOpen}">
     <Tuto :tuto-open.sync="tutoOpen" :help-list="helpList" @update:tutoOpen="onCloseTuto"></Tuto>
     <div class="content-container" :style="cssVars">
-      <timeline />
+      <timeline @click:indice="onClickIndice" />
       <div class="house-container" id="house-container">
         <h1>Le jeu du temps</h1>
         <h2>Habitat individuel</h2>
@@ -104,7 +104,8 @@ export default {
       publicPath: process.env.BASE_URL,
       tutoOpen: false,
       houseH2Position: 0,
-      buildingH2Position: 0
+      buildingH2Position: 0,
+      friseHelp: []
     }
   },
   created() {
@@ -120,6 +121,7 @@ export default {
           this.houseList = data.cards.houseList;
           this.buildingList = data.cards.buildingList;
           this.helpList = data.globalHelp;
+          this.friseHelp = data.friseHelp;
         });
 
     // Handle the mouseevent to scroll the window when mouse approaching the edge
@@ -150,10 +152,13 @@ export default {
       this.modalContent = null;
       this.modalHtml = `<img src="${this.publicPath}images/${name}" alt="" /><div>${help}</div>`;
       this.modalState = 'info';
-    })
+    });
 
     this.tutoOpen = true;
 
+    this.placeLists();
+  },
+  beforeUpdate() {
     this.placeLists();
   },
   destroyed() {
@@ -355,11 +360,19 @@ export default {
 
       this.houseH2Position = houseIndice - toolsContainerWidth - h1Width - h2House.clientWidth - houseContainerWidth/2;
       this.buildingH2Position = buildingIndice  - toolsContainerWidth - (h1Width / 5) - h2Building.clientWidth;
-
-      console.log(h2House, h2Building, buildingIndice)
     },
     windowsResize() {
       this.placeLists();
+    },
+    onClickIndice(indiceId) {
+      const friseHelp = this.friseHelp.find((help) => help.id === indiceId);
+      if(!friseHelp) return;
+      const help = friseHelp.content ?? 'Aucune aide disponible pour le moment';
+      const date = friseHelp.date ?? '';
+      this.showModal = true;
+      this.modalContent = date;
+      this.modalHtml = help;
+      this.modalState = 'info';
     }
   }
 }
