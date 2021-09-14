@@ -1406,25 +1406,25 @@
     <circle id="indice006" class="st13 indice" @click="onClickIndice" cx="1307.5" cy="279.5" r="5.5"/>
     <circle id="indice004" class="st13 indice" @click="onClickIndice" cx="1103.5" cy="279.5" r="5.5"/>
     <rect x="1070" y="-57" class="st6" width="93" height="201"/>
-    <circle id="indice021" class="st13 indice" @click="onClickIndice" cx="1370.5" cy="94.5" r="5.5"/>
-    <circle id="indice022" class="st13 indice" @click="onClickIndice" cx="1455.5" cy="94.5" r="5.5"/>
+    <circle id="indice009" class="st13 indice" @click="onClickIndice" cx="1370.5" cy="94.5" r="5.5"/>
+    <circle id="indice010" class="st13 indice" @click="onClickIndice" cx="1455.5" cy="94.5" r="5.5"/>
     <circle id="indice008" class="st13 indice" @click="onClickIndice" cx="1452.5" cy="279.5" r="5.5"/>
-    <circle id="indice009" class="st13 indice" @click="onClickIndice" cx="1512.5" cy="279.5" r="5.5"/>
-    <circle id="indice010" class="st13 indice" @click="onClickIndice" cx="1581.5" cy="279.5" r="5.5"/>
+    <circle id="indice011" class="st13 indice" @click="onClickIndice" cx="1512.5" cy="279.5" r="5.5"/>
+    <circle id="indice012" class="st13 indice" @click="onClickIndice" cx="1581.5" cy="279.5" r="5.5"/>
     <rect x="1261" y="-57" class="st6" width="93" height="201"/>
     <rect x="1168" y="-57" class="st6" width="93" height="201"/>
-    <circle id="inidce012" class="st13 indice" @click="onClickIndice" cx="1778.5" cy="279.5" r="5.5"/>
-    <circle id="indice011" class="st13 indice" @click="onClickIndice" cx="1649.5" cy="279.5" r="5.5"/>
+    <circle id="indice014" class="st13 indice" @click="onClickIndice" cx="1778.5" cy="279.5" r="5.5"/>
+    <circle id="indice013" class="st13 indice" @click="onClickIndice" cx="1649.5" cy="279.5" r="5.5"/>
     <circle id="indice007" class="st13 indice" @click="onClickIndice" cx="1379.5" cy="279.5" r="5.5"/>
-    <circle id="indice013" class="st13 indice" @click="onClickIndice" cx="1846.5" cy="279.5" r="5.5"/>
-    <circle id="indice014" class="st13 indice" @click="onClickIndice" cx="1888.5" cy="279.5" r="5.5"/>
-    <circle id="indice015" class="st13 indice" @click="onClickIndice" cx="1955.5" cy="279.5" r="5.5"/>
+    <circle id="indice015" class="st13 indice" @click="onClickIndice" cx="1846.5" cy="279.5" r="5.5"/>
+    <circle id="indice016" class="st13 indice" @click="onClickIndice" cx="1888.5" cy="279.5" r="5.5"/>
+    <circle id="indice017" class="st13 indice" @click="onClickIndice" cx="1955.5" cy="279.5" r="5.5"/>
     <circle id="indice019" class="st13 indice" @click="onClickIndice" cx="2090.5" cy="279.5" r="5.5"/>
-    <circle id="indice017" class="st13 indice" @click="onClickIndice" cx="2133.5" cy="279.5" r="5.5"/>
-    <circle id="indice018" class="st13 indice" @click="onClickIndice" cx="2167.5" cy="279.5" r="5.5"/>
+    <circle id="indice020" class="st13 indice" @click="onClickIndice" cx="2133.5" cy="279.5" r="5.5"/>
+    <circle id="indice021" class="st13 indice" @click="onClickIndice" cx="2167.5" cy="279.5" r="5.5"/>
     <circle id="indice023" class="st13 indice" @click="onClickIndice" cx="2347.5" cy="279.5" r="5.5"/>
-    <circle id="indice016" class="st13 indice" @click="onClickIndice" cx="2270.5" cy="279.5" r="5.5"/>
-    <circle id="indice020" class="st13 indice" @click="onClickIndice" cx="2034.5" cy="94.5" r="5.5"/>
+    <circle id="indice022" class="st13 indice" @click="onClickIndice" cx="2270.5" cy="279.5" r="5.5"/>
+    <circle id="indice018" class="st13 indice" @click="onClickIndice" cx="2034.5" cy="94.5" r="5.5"/>
     <rect x="1623" y="-57" class="st6" width="93" height="201"/>
     <rect x="1722" y="-57" class="st6" width="93" height="201"/>
     <rect x="1815" y="-57" class="st6" width="93" height="201"/>
