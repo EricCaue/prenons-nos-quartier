@@ -1,18 +1,18 @@
 <template>
   <div id="app" :class="{'tuto-open': tutoOpen}">
-    <Tuto :tuto-open.sync="tutoOpen" :help-list="helpList"></Tuto>
-    <h1>Le jeu du temps</h1>
-    <div class="content-container">
+    <Tuto :tuto-open.sync="tutoOpen" :help-list="helpList" @update:tutoOpen="onCloseTuto"></Tuto>
+    <div class="content-container" :style="cssVars">
       <timeline />
       <div class="house-container" id="house-container">
+        <h1>Le jeu du temps</h1>
         <h2>Habitat individuel</h2>
-        <div class="box-tank">
+        <div class="box-tank" id="house-box">
           <Box v-for="house in houseList" :key="house.id" :id="house.id"/>
         </div>
       </div>
-      <div class="building-container">
+      <div class="building-container" id="building-container">
         <h2>Habitat collectif</h2>
-        <div class="box-tank">
+        <div class="box-tank" id="building-box">
           <Box v-for="building in buildingList" :key="building.id" :id="building.id"/>
         </div>
       </div>
@@ -102,8 +102,13 @@ export default {
       isFullscreen: false,
       fullscreenHelp: 'Afficher en plein écran',
       publicPath: process.env.BASE_URL,
-      tutoOpen: false
+      tutoOpen: false,
+      houseH2Position: 0,
+      buildingH2Position: 0
     }
+  },
+  created() {
+    window.addEventListener("resize", this.windowsResize);
   },
   mounted() {
     const baseUrl = process.env.BASE_URL;
@@ -148,6 +153,19 @@ export default {
     })
 
     this.tutoOpen = true;
+
+    this.placeLists();
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.windowsResize);
+  },
+  computed: {
+    cssVars() {
+      return {
+        '--h2-house-position': this.houseH2Position + 'px',
+        '--h2-building-position': this.buildingH2Position + 'px'
+      }
+    }
   },
   methods: {
     disableScroll() {
@@ -319,6 +337,29 @@ export default {
       }
 
       return array;
+    },
+    onCloseTuto() {
+      this.placeLists();
+    },
+    placeLists() {
+      const h2House = this.$el.querySelector('#house-container h2');
+      const h2Building = this.$el.querySelector('#building-container h2');
+      const houseIndice = this.$el.querySelector('#indice001').getBoundingClientRect().left;
+      const buildingIndice = this.$el.querySelector('#indice007').getBoundingClientRect().left;
+      const toolsContainerWidth = this.$el.querySelector('#tools-container').clientWidth;
+      const h1Width = 220;
+      let houseContainerWidth = 0;
+      if(this.$el.querySelector('.box')) {
+        houseContainerWidth = this.$el.querySelector('.box').clientWidth;
+      }
+
+      this.houseH2Position = houseIndice - toolsContainerWidth - h1Width - h2House.clientWidth - houseContainerWidth/2;
+      this.buildingH2Position = buildingIndice  - toolsContainerWidth - (h1Width / 5) - h2Building.clientWidth;
+
+      console.log(h2House, h2Building, buildingIndice)
+    },
+    windowsResize() {
+      this.placeLists();
     }
   }
 }
@@ -416,6 +457,8 @@ $caseWidth: $caseHeight * .7;
     display: flex;
     writing-mode: vertical-lr;
     transform: rotate(180deg);
+    align-self: center;
+    margin: 0;
   }
 
   .box-tank {
@@ -423,6 +466,18 @@ $caseWidth: $caseHeight * .7;
     display: grid;
     grid-template-columns: repeat(40, $caseWidth);
     grid-column-gap: .8rem;
+  }
+}
+
+.house-container {
+  h2 {
+    margin-left: var(--h2-house-position);
+  }
+}
+
+.building-container {
+  h2 {
+    margin-left: var(--h2-building-position);
   }
 }
 </style>
