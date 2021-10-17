@@ -1,7 +1,5 @@
 <template>
-    <div @mouseover="methodOver"
-         @mouseleave="methodLeave"
-         class="image-tank">
+    <div class="image-tank">
         <h3>Mes bâtiments</h3>
         <div class="image-container">
             <draggable-image v-for="img in imgList"
@@ -22,7 +20,7 @@
         components: {
             DraggableImage
         },
-        props: ["imgList", "methodOver", "methodLeave"],
+        props: ["imgList"],
         data() {
             return {
                 isClosed: true
