@@ -4,7 +4,6 @@
     <div class="content-container" :style="cssVars">
       <timeline @click:indice="onClickIndice" />
       <div class="house-container" id="house-container">
-        <h1>Le jeu du temps</h1>
         <h2>Habitat individuel</h2>
         <div class="box-tank" id="house-box">
           <Box v-for="house in houseList" :key="house.id" :id="house.id"/>
@@ -15,6 +14,10 @@
         <div class="box-tank" id="building-box">
           <Box v-for="building in buildingList" :key="building.id" :id="building.id"/>
         </div>
+      </div>
+      <div class="presentation-container">
+        <h1>Le jeu du temps</h1>
+        <div class="logo-container"></div>
       </div>
     </div>
     <div id="tools-container" class="tools-container">
@@ -260,18 +263,17 @@ export default {
     },
     placeLists() {
       const h2House = this.$el.querySelector('#house-container h2');
-      const h2Building = this.$el.querySelector('#building-container h2');
       const houseIndice = this.$el.querySelector('#indice001').getBoundingClientRect().left;
-      const buildingIndice = this.$el.querySelector('#indice007').getBoundingClientRect().left;
-      const toolsContainerWidth = this.$el.querySelector('#tools-container').clientWidth;
-      const h1Width = 220;
+      // const buildingIndice = this.$el.querySelector('#indice007').getBoundingClientRect().left;
+      const toolsContainerWidth = 180;
+      const gridGap = 12.8;
       let houseContainerWidth = 0;
       if(this.$el.querySelector('.box')) {
         houseContainerWidth = this.$el.querySelector('.box').clientWidth;
       }
 
-      this.houseH2Position = houseIndice - toolsContainerWidth - h1Width - h2House.clientWidth - houseContainerWidth/2;
-      this.buildingH2Position = buildingIndice  - toolsContainerWidth - (h1Width / 5) - h2Building.clientWidth;
+      this.houseH2Position = houseIndice - (toolsContainerWidth + h2House.clientWidth + houseContainerWidth + gridGap / 2);
+      this.buildingH2Position = this.houseH2Position  + h2House.clientWidth + houseContainerWidth * 3 + gridGap;
     },
     windowsResize() {
       this.placeLists();
@@ -386,7 +388,7 @@ $caseWidth: $caseHeight * .7;
 
   h2 {
     display: flex;
-    writing-mode: vertical-lr;
+    writing-mode: vertical-rl;
     transform: rotate(180deg);
     align-self: center;
     margin: 0;
@@ -410,5 +412,12 @@ $caseWidth: $caseHeight * .7;
   h2 {
     margin-left: var(--h2-building-position);
   }
+}
+
+.presentation-container {
+  position: fixed;
+  bottom: 0;
+  left: 200px;
+  padding: 1rem 0;
 }
 </style>
