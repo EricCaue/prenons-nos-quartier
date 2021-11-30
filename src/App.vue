@@ -1,10 +1,9 @@
 <template>
-  <div id="app" :class="{'tuto-open': tutoOpen}">
+  <div id="app" :class="{'tuto-open': tutoOpen, 'is-moving': isMoving}">
     <Tuto :tuto-open.sync="tutoOpen" :help-list="helpList" @update:tutoOpen="onCloseTuto"></Tuto>
     <div class="content-container" :style="cssVars">
       <timeline @click:indice="onClickIndice" />
       <div class="house-container" id="house-container">
-        <h1>Le jeu du temps</h1>
         <h2>Habitat individuel</h2>
         <div class="box-tank" id="house-box">
           <Box v-for="house in houseList" :key="house.id" :id="house.id"/>
@@ -15,6 +14,10 @@
         <div class="box-tank" id="building-box">
           <Box v-for="building in buildingList" :key="building.id" :id="building.id"/>
         </div>
+      </div>
+      <div class="presentation-container">
+        <h1>Le jeu du temps</h1>
+        <div class="logo-container"></div>
       </div>
     </div>
     <div id="tools-container" class="tools-container">
@@ -43,8 +46,6 @@
       </div>
       <image-tank
           id="image-tank"
-          :method-over="disableScroll"
-          :method-leave="enableScroll"
           :img-list="imgList"/>
     </div>
     <modal v-if="showModal"
@@ -77,8 +78,8 @@ import Modal from "@/components/Modal";
 import Tuto from "@/components/Tuto";
 import Timeline from "./components/Timeline";
 
-let edgeSize = 200;
-let timer = null;
+// let edgeSize = 200;
+// let timer = null;
 
 export default {
   name: 'App',
@@ -91,6 +92,12 @@ export default {
   },
   data() {
     return {
+      pos: {
+        top: 0,
+        left: 0,
+        x: 0,
+        y: 0
+      },
       houseList: [],
       buildingList: [],
       imgList: [],
@@ -103,6 +110,7 @@ export default {
       fullscreenHelp: 'Afficher en plein écran',
       publicPath: process.env.BASE_URL,
       tutoOpen: false,
+      isMoving: false,
       houseH2Position: 0,
       buildingH2Position: 0,
       friseHelp: []
@@ -124,7 +132,7 @@ export default {
           this.friseHelp = data.friseHelp;
         });
 
-    // Handle the mouseevent to scroll the window when mouse approaching the edge
+    // Handle the mouseevent to scroll the window when grab
     this.enableScroll();
 
     // Handle the image add ok event
@@ -154,11 +162,11 @@ export default {
       this.modalState = 'info';
     });
 
+    this.$on('image-drag:start', this.disableScroll);
+    this.$on('image-drag:stop', this.enableScroll);
+
     this.tutoOpen = true;
 
-    this.placeLists();
-  },
-  beforeUpdate() {
     this.placeLists();
   },
   destroyed() {
@@ -174,10 +182,10 @@ export default {
   },
   methods: {
     disableScroll() {
-      window.removeEventListener("mousemove", this.handleMousemove, false);
+      window.removeEventListener("mousedown", this.handleMouseDown, false);
     },
     enableScroll() {
-      window.addEventListener("mousemove", this.handleMousemove, false);
+      window.addEventListener("mousedown", this.handleMouseDown, false);
     },
     openGlobalHelp() {
       window.scrollTo(0, 0);
@@ -209,122 +217,29 @@ export default {
     },
     // Used to handle window move with mouse move.
     handleMousemove(event) {
-      // Get the viewport-relative coordinates of the mousemove event.
-      let viewportX = event.clientX;
+      // How far the mouse has been moved
+      const dx = event.clientX - this.pos.x;
 
-      // Get the viewport dimensions.
-      let viewportWidth = document.documentElement.clientWidth;
+      // Scroll the element
+      document.documentElement.scrollLeft = this.pos.left - dx;
+    },
+    handleMouseDown(event) {
+      this.pos = {
+        // The current scroll
+        left: document.documentElement.scrollLeft,
+        // Get the current mouse position
+        x: event.clientX,
+      };
 
-      // Next, we need to determine if the mouse is within the "edge" of the
-      // viewport, which may require scrolling the window. To do this, we need to
-      // calculate the boundaries of the edge in the viewport (these coordinates
-      // are relative to the viewport grid system).
-      let edgeLeft = edgeSize + 100;
-      let edgeRight = (viewportWidth - edgeSize);
+      this.isMoving = true;
 
-      let isInLeftEdge = (viewportX > 100 && viewportX < edgeLeft);
-      let isInRightEdge = (viewportX > edgeRight);
-
-
-      // If the mouse is not in the viewport edge, there's no need to calculate
-      // anything else.
-      if (!(isInLeftEdge || isInRightEdge)) {
-        clearTimeout(timer);
-        return;
-      }
-
-
-      // If we made it this far, the user's mouse is located within the edge of the
-      // viewport. As such, we need to check to see if scrolling needs to be done.
-
-      // Get the document dimensions.
-      // --
-      // NOTE: The various property reads here are for cross-browser compatibility
-      // as outlined in the JavaScript.info site (link provided above).
-      let documentWidth = Math.max(
-          document.body.scrollWidth,
-          document.body.offsetWidth,
-          document.body.clientWidth,
-          document.documentElement.scrollWidth,
-          document.documentElement.offsetWidth,
-          document.documentElement.clientWidth
-      );
-
-      // Calculate the maximum scroll offset in each direction. Since you can only
-      // scroll the overflow portion of the document, the maximum represents the
-      // length of the document that is NOT in the viewport.
-      let maxScrollX = (documentWidth - viewportWidth);
-
-      // As we examine the mousemove event, we want to adjust the window scroll in
-      // immediate response to the event; but, we also want to continue adjusting
-      // the window scroll if the user rests their mouse in the edge boundary. To
-      // do this, we'll invoke the adjustment logic immediately. Then, we'll setup
-      // a timer that continues to invoke the adjustment logic while the window can
-      // still be scrolled in a particular direction.
-      // --
-      // NOTE: There are probably better ways to handle the ongoing animation
-      // check. But, the point of this demo is really about the math logic, not so
-      // much about the interval logic.
-      if (!this.tutoOpen) {
-        (function checkForWindowScroll() {
-          clearTimeout(timer);
-
-          if (adjustWindowScroll()) {
-            timer = setTimeout(checkForWindowScroll, 30);
-          }
-        })();
-      }
-
-      // Adjust the window scroll based on the user's mouse position. Returns True
-      // or False depending on whether or not the window scroll was changed.
-      function adjustWindowScroll() {
-        // Get the current scroll position of the document.
-        let currentScrollX = window.pageXOffset;
-
-        // Determine if the window can be scrolled in any particular direction.
-        let canScrollLeft = (currentScrollX > 0);
-        let canScrollRight = (currentScrollX < maxScrollX);
-
-        // Since we can potentially scroll in two directions at the same time,
-        // let's keep track of the next scroll, starting with the current scroll.
-        // Each of these values can then be adjusted independently in the logic
-        // below.
-        let nextScrollX = currentScrollX;
-
-        // As we examine the mouse position within the edge, we want to make the
-        // incremental scroll changes more "intense" the closer that the user
-        // gets the viewport edge. As such, we'll calculate the percentage that
-        // the user has made it "through the edge" when calculating the delta.
-        // Then, that use that percentage to back-off from the "max" step value.
-        let maxStep = 200;
-
-        // Should we scroll left?
-        if (isInLeftEdge && canScrollLeft) {
-          let intensity = ((edgeLeft - viewportX) / edgeSize);
-
-          nextScrollX = (nextScrollX - (maxStep * intensity / 15));
-
-          // Should we scroll right?
-        } else if (isInRightEdge && canScrollRight) {
-          let intensity = ((viewportX - edgeRight) / edgeSize);
-
-          nextScrollX = (nextScrollX + (maxStep * intensity / 15));
-        }
-
-        // Sanitize invalid maximums. An invalid scroll offset won't break the
-        // subsequent .scrollTo() call; however, it will make it harder to
-        // determine if the .scrollTo() method should have been called in the
-        // first place.
-        nextScrollX = Math.max(0, Math.min(maxScrollX, nextScrollX));
-
-        if ((nextScrollX !== currentScrollX)) {
-          window.scrollTo(nextScrollX, 0);
-          return true;
-        } else {
-          return false;
-        }
-
-      }
+      window.addEventListener('mousemove', this.handleMousemove);
+      window.addEventListener('mouseup', this.handleMouseUp);
+    },
+    handleMouseUp() {
+      this.isMoving = false;
+      window.removeEventListener('mousemove', this.handleMousemove);
+      window.removeEventListener('mouseup', this.handleMouseUp);
     },
     shuffle(array) {
       let currentIndex = array.length, randomIndex;
@@ -348,18 +263,17 @@ export default {
     },
     placeLists() {
       const h2House = this.$el.querySelector('#house-container h2');
-      const h2Building = this.$el.querySelector('#building-container h2');
       const houseIndice = this.$el.querySelector('#indice001').getBoundingClientRect().left;
-      const buildingIndice = this.$el.querySelector('#indice007').getBoundingClientRect().left;
-      const toolsContainerWidth = this.$el.querySelector('#tools-container').clientWidth;
-      const h1Width = 220;
+      // const buildingIndice = this.$el.querySelector('#indice007').getBoundingClientRect().left;
+      const toolsContainerWidth = 180;
+      const gridGap = 12.8;
       let houseContainerWidth = 0;
       if(this.$el.querySelector('.box')) {
         houseContainerWidth = this.$el.querySelector('.box').clientWidth;
       }
 
-      this.houseH2Position = houseIndice - toolsContainerWidth - h1Width - h2House.clientWidth - houseContainerWidth/2;
-      this.buildingH2Position = buildingIndice  - toolsContainerWidth - (h1Width / 5) - h2Building.clientWidth;
+      this.houseH2Position = houseIndice - (toolsContainerWidth + h2House.clientWidth + houseContainerWidth + gridGap / 2);
+      this.buildingH2Position = this.houseH2Position  + h2House.clientWidth + houseContainerWidth * 3 + gridGap;
     },
     windowsResize() {
       this.placeLists();
@@ -385,7 +299,13 @@ $friseHeight: 27.4vh;
 $caseHeight: 23vh;
 $caseWidth: $caseHeight * .7;
 #app {
+  cursor: grab;
   padding-left: 180px;
+
+  &.is-moving {
+    cursor: grabbing;
+    user-select: none;
+  }
 
   &.tuto-open {
     overflow: hidden;
@@ -468,7 +388,7 @@ $caseWidth: $caseHeight * .7;
 
   h2 {
     display: flex;
-    writing-mode: vertical-lr;
+    writing-mode: vertical-rl;
     transform: rotate(180deg);
     align-self: center;
     margin: 0;
@@ -492,5 +412,12 @@ $caseWidth: $caseHeight * .7;
   h2 {
     margin-left: var(--h2-building-position);
   }
+}
+
+.presentation-container {
+  position: fixed;
+  bottom: 0;
+  left: 200px;
+  padding: 1rem 0;
 }
 </style>

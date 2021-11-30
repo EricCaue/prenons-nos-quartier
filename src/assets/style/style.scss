@@ -3,6 +3,9 @@
 @import "button";
 @import "tooltip";
 
+html, body, #app {
+  height: 100%;
+}
 body {
   margin: 0;
   font-family:  "pt_sansregular", Arial, sans-serif;

@@ -2,6 +2,8 @@
   <drag class="image"
         effect-allowed="move"
         drop-effect="move"
+        @dragstart="dragStart"
+        @dragend="dragEnd"
         :transfer-data="{ id: id, dragTo: dragTo, imageName: name }">
     <img @click="openHelpModal" :src="publicPath + 'images/' + name" alt="">
     <div v-if="help" class="img-help" @click="openHelpModal">
@@ -24,6 +26,12 @@ export default {
     }
   },
   methods: {
+    dragEnd() {
+      this.$parent.$parent.$emit('image-drag:stop');
+    },
+    dragStart() {
+      this.$parent.$parent.$emit('image-drag:start');
+    },
     openHelpModal() {
       this.$parent.$parent.$emit('open:modal', this.id);
     }
